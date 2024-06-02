@@ -1,0 +1,50 @@
+{
+	"songs": [
+		[
+			"uni",
+			"face",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"nightmare",
+			"face",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"paws",
+			"face",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"difficulties": "",
+	"weekCharacters": [
+		"bf",
+		"bf",
+		"gf"
+	],
+	"storyName": "Your New Week",
+	"weekName": "Custom Week",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": true,
+	"weekBefore": "tutorial",
+	"startUnlocked": true
+}
