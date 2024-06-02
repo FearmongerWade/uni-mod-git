@@ -95,7 +95,7 @@
 	<section if="MODS_ALLOWED">
 		<assets path='example_mods' rename='mods' embed='false' type='template'/>
 	</section>
-	<assets path='art/readme.txt' rename='do NOT readme.txt' />
+	<assets path='meta/readme.txt' rename='do NOT readme.txt' />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
@@ -170,10 +170,10 @@
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
 
-	<assets path='art/iconOG.png' rename='icon.png' if="linux" />
+	<assets path='meta/iconOG.png' rename='icon.png' if="linux" />
 	
-	<icon path="art/icon16.png" size='16'/>
-	<icon path="art/icon32.png" size='32'/>
-	<icon path="art/icon64.png" size='64'/>
-	<icon path="art/iconOG.png" />
+	<icon path="meta/icon16.png" size='16'/>
+	<icon path="meta/icon32.png" size='32'/>
+	<icon path="meta/icon64.png" size='64'/>
+	<icon path="meta/iconOG.png" />
 </project>
