@@ -3,9 +3,7 @@ package backend;
 class Language
 {
 	public static var defaultLangName:String = 'English (US)'; //en-US
-	#if TRANSLATIONS_ALLOWED
 	private static var phrases:Map<String, String> = [];
-	#end
 
 	public static function reloadPhrases()
 	{
