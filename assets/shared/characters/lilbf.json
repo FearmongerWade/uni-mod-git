@@ -1,0 +1,124 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-5,
+				0
+			],
+			"indices": [],
+			"fps": 14,
+			"anim": "idle",
+			"loop": true,
+			"name": "bf idle"
+		},
+		{
+			"offsets": [
+				39,
+				8
+			],
+			"indices": [],
+			"fps": 14,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "bf left0"
+		},
+		{
+			"offsets": [
+				11,
+				-24
+			],
+			"indices": [],
+			"fps": 14,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "bf down0"
+		},
+		{
+			"offsets": [
+				16,
+				41
+			],
+			"indices": [],
+			"fps": 14,
+			"anim": "singUP",
+			"loop": false,
+			"name": "bf up0"
+		},
+		{
+			"offsets": [
+				-9,
+				0
+			],
+			"indices": [],
+			"fps": 14,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "bf right0"
+		},
+		{
+			"offsets": [
+				39,
+				7
+			],
+			"indices": [],
+			"fps": 14,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "bf left miss"
+		},
+		{
+			"offsets": [
+				12,
+				-25
+			],
+			"indices": [],
+			"fps": 14,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "bf down miss"
+		},
+		{
+			"offsets": [
+				18,
+				38
+			],
+			"indices": [],
+			"fps": 14,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "bf up miss"
+		},
+		{
+			"offsets": [
+				-10,
+				-1
+			],
+			"indices": [],
+			"fps": 14,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "bf right miss"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": true,
+	"image": "characters/nightmare/pocketsizedbf",
+	"position": [
+		0,
+		350
+	],
+	"healthicon": "bf",
+	"flip_x": true,
+	"healthbar_colors": [
+		49,
+		176,
+		209
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": true
+}
