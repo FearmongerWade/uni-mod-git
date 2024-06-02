@@ -4,11 +4,11 @@ function onCreatePost()
 
     -- ASSETS --
 
-    makeLuaSprite('bg', path..'bg', 0, 0)
+    makeLuaSprite('bg', path..'bg', 0, 10)
     scaleObject('bg', 0.8, 0.8)
     addLuaSprite('bg')
 
-    makeAnimatedLuaSprite('tvSprites', path..'tv_sprites', 970, 390)
+    makeAnimatedLuaSprite('tvSprites', path..'tv_sprites', 830, 280)
     addAnimationByPrefix('tvSprites', 'tv1', '1', 24)
     addAnimationByPrefix('tvSprites', 'tv2', '2', 24)
     addAnimationByPrefix('tvSprites', 'tv3', '3', 24)
@@ -17,23 +17,23 @@ function onCreatePost()
     scaleObject('tvSprites', 0.76, 0.76)
     addLuaSprite('tvSprites')
 
-    makeLuaSprite('tv', path..'tv', 920, 342)
+    makeLuaSprite('tv', path..'tv', 800, 240)
     scaleObject('tv', 0.75, 0.75)
     addLuaSprite('tv')
 
     -- CATS --
 
-    makeAnimatedLuaSprite('aoba', path..'aoba', 600, 750)
+    makeAnimatedLuaSprite('aoba', path..'aoba', 400, 630)
     addAnimationByPrefix('aoba', 'bump', 'aoba', 18)
     scaleObject('aoba', 0.8, 0.8)
     addLuaSprite('aoba')
 
-    makeAnimatedLuaSprite('sora', path..'sora', 1550, 900)
+    makeAnimatedLuaSprite('sora', path..'sora', 1260, 900)
     addAnimationByPrefix('sora', 'bump', 'sora', 18)
     scaleObject('sora', 0.8, 0.8)
     addLuaSprite('sora')
 
-    makeAnimatedLuaSprite('yoru', path..'yoru', 2050, 1000)
+    makeAnimatedLuaSprite('yoru', path..'yoru', 1750, 1000)
     addAnimationByPrefix('yoru', 'bump', 'yoru', 18)
     scaleObject('yoru', 0.8, 0.8)
     addLuaSprite('yoru')
