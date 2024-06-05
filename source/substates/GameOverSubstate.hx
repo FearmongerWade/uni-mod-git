@@ -12,6 +12,13 @@ import states.FreeplayState;
 class GameOverSubstate extends MusicBeatSubstate
 {
 	public var boyfriend:Character;
+	var retry:FlxSprite;
+	var box:FlxSprite;
+	var selector:FlxSprite;
+
+	var path:String = "menus/game_over/boyfriend/";
+	var curSelected:Int;
+
 	var camFollow:FlxObject;
 	var moveCamera:Bool = false;
 	var playingDeathSound:Bool = false;
@@ -48,10 +55,30 @@ class GameOverSubstate extends MusicBeatSubstate
 		instance = this;
 
 		Conductor.songPosition = 0;
+		Conductor.bpm = 100;
 
-		boyfriend = new Character(PlayState.instance.boyfriend.getScreenPosition().x, PlayState.instance.boyfriend.getScreenPosition().y, characterName, true);
-		boyfriend.x += boyfriend.positionArray[0] - PlayState.instance.boyfriend.positionArray[0];
-		boyfriend.y += boyfriend.positionArray[1] - PlayState.instance.boyfriend.positionArray[1];
+		retry = new FlxSprite(98, 55);
+		retry.frames = Paths.getSparrowAtlas(path + 'retry');
+		retry.animation.addByPrefix('idle', 'retry bump', 24, true);
+		retry.antialiasing = false;
+		retry.scrollFactor.set();
+		retry.alpha = 0;
+		add(retry);
+
+		box = new FlxSprite(144, 377).loadGraphic(Paths.image(path + 'box'));
+		box.antialiasing = false;
+		box.scrollFactor.set();
+		box.alpha = 0;
+		add(box);
+
+		selector = new FlxSprite(180, 450).loadGraphic(Paths.image(path + 'arrow'));
+		selector.antialiasing = false;
+		selector.scrollFactor.set();
+		selector.alpha = 0;
+		add(selector);
+
+		boyfriend = new Character(610, 30, characterName, true);
+		boyfriend.scrollFactor.set();
 		add(boyfriend);
 
 		FlxG.sound.play(Paths.sound(deathSoundName));
@@ -59,16 +86,22 @@ class GameOverSubstate extends MusicBeatSubstate
 		FlxG.camera.target = null;
 
 		boyfriend.playAnim('firstDeath');
-
-		camFollow = new FlxObject(0, 0, 1, 1);
-		camFollow.setPosition(boyfriend.getGraphicMidpoint().x + boyfriend.cameraPosition[0], boyfriend.getGraphicMidpoint().y + boyfriend.cameraPosition[1]);
-		FlxG.camera.focusOn(new FlxPoint(FlxG.camera.scroll.x + (FlxG.camera.width / 2), FlxG.camera.scroll.y + (FlxG.camera.height / 2)));
-		add(camFollow);
 		
 		PlayState.instance.setOnScripts('inGameOver', true);
 		PlayState.instance.callOnScripts('onGameOverStart', []);
 
+		FlxG.camera.zoom = 1.0;
+
 		super.create();
+	}
+
+	override function beatHit()
+	{
+		if (startedDeath)
+		{
+			retry.animation.play('idle');
+			boyfriend.playAnim('deathLoop');
+		}
 	}
 
 	public var startedDeath:Bool = false;
@@ -78,28 +111,24 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		PlayState.instance.callOnScripts('onUpdate', [elapsed]);
 
+		if (controls.UI_UP_P)
+			changeSelection(-1);
+		if (controls.UI_DOWN_P)
+			changeSelection(1);
+
 		if (controls.ACCEPT)
 		{
-			endBullshit();
+			switch(curSelected)
+			{
+				case 0: // yes
+					endBullshit();
+				case 1: // no
+					backToMenu();
+			}
 		}
 
 		if (controls.BACK)
-		{
-			#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
-			FlxG.sound.music.stop();
-			PlayState.deathCounter = 0;
-			PlayState.seenCutscene = false;
-			PlayState.chartingMode = false;
-
-			Mods.loadTopMod();
-			if (PlayState.isStoryMode)
-				MusicBeatState.switchState(new StoryMenuState());
-			else
-				MusicBeatState.switchState(new FreeplayState());
-
-			FlxG.sound.playMusic(Paths.music('freakyMenu'));
-			PlayState.instance.callOnScripts('onGameOverConfirm', [false]);
-		}
+			backToMenu();
 		
 		if (boyfriend.animation.curAnim != null)
 		{
@@ -108,10 +137,11 @@ class GameOverSubstate extends MusicBeatSubstate
 
 			if(boyfriend.animation.curAnim.name == 'firstDeath')
 			{
-				if(boyfriend.animation.curAnim.curFrame >= 12 && !moveCamera)
+				if(boyfriend.animation.curAnim.curFrame >= 30)
 				{
-					FlxG.camera.follow(camFollow, LOCKON, 0.01);
-					moveCamera = true;
+					FlxTween.tween(retry, {alpha:1}, 0.5);
+					FlxTween.tween(selector, {alpha:1}, 0.5);
+					FlxTween.tween(box, {alpha:1}, 0.5);
 				}
 
 				if (boyfriend.animation.curAnim.finished && !playingDeathSound)
@@ -168,6 +198,47 @@ class GameOverSubstate extends MusicBeatSubstate
 			});
 			PlayState.instance.callOnScripts('onGameOverConfirm', [true]);
 		}
+	}
+
+	function backToMenu():Void
+	{
+		#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+		FlxG.sound.music.stop();
+		PlayState.deathCounter = 0;
+		PlayState.seenCutscene = false;
+		PlayState.chartingMode = false;
+
+		Mods.loadTopMod();
+		if (PlayState.isStoryMode)
+			MusicBeatState.switchState(new StoryMenuState());
+		else
+			MusicBeatState.switchState(new FreeplayState());
+
+		FlxG.sound.playMusic(Paths.music('freakyMenu'));
+		PlayState.instance.callOnScripts('onGameOverConfirm', [false]);
+	}
+
+	function changeSelection(fuck:Int = 0)
+	{
+		curSelected += fuck;
+		
+		FlxG.sound.play(Paths.sound('scrollMenu'));
+
+		if (curSelected > 1)
+			curSelected = 0;
+		if (curSelected < 0)
+			curSelected = 1;
+
+		switch (curSelected)
+		{
+			case 0:
+				selector.x = 180;
+				selector.y = 450;
+			case 1:
+				selector.x = 210;
+				selector.y = 555;
+		}
+
 	}
 
 	override function destroy()

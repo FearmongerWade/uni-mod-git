@@ -5,37 +5,82 @@
 				37,
 				11
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "firstDeath",
-			"indices": [],
-			"name": "BF dies"
+			"loop": false,
+			"name": "bf snap"
 		},
 		{
 			"offsets": [
-				37,
-				5
+				45,
+				-51
 			],
-			"loop": true,
+			"indices": [],
 			"fps": 24,
 			"anim": "deathLoop",
-			"indices": [],
-			"name": "BF Dead Loop"
+			"loop": false,
+			"name": "bf idle"
 		},
 		{
 			"offsets": [
-				37,
-				69
+				30,
+				6
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "deathConfirm",
+			"loop": false,
+			"name": "bf confirm"
+		},
+		{
+			"offsets": [
+				60,
+				-51
+			],
 			"indices": [],
-			"name": "BF Dead confirm"
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "bf left"
+		},
+		{
+			"offsets": [
+				30,
+				-82
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "bf down"
+		},
+		{
+			"offsets": [
+				20,
+				10
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "bf up"
+		},
+		{
+			"offsets": [
+				-22,
+				-46
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "bf right"
 		}
 	],
+	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/BOYFRIEND_DEAD",
+	"image": "menus/game_over/boyfriend/boyfriend",
 	"position": [
 		0,
 		350
@@ -52,5 +97,6 @@
 		0
 	],
 	"sing_duration": 4,
-	"scale": 1
+	"scale": 1,
+	"_editor_isPlayer": true
 }
