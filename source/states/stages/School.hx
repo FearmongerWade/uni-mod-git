@@ -1,7 +1,7 @@
 package states.stages;
 
 import states.stages.objects.*;
-import substates.GameOverSubstate;
+import substates.gameover.BoyfriendGameOver;
 import cutscenes.DialogueBox;
 
 import openfl.utils.Assets as OpenFlAssets;

@@ -3,7 +3,7 @@ package psychlua;
 import Type.ValueType;
 import haxe.Constraints;
 
-import substates.GameOverSubstate;
+import substates.gameover.BoyfriendGameOver;
 
 //
 // Functions that use a high amount of Reflections, which are somewhat CPU intensive
@@ -175,7 +175,7 @@ class ReflectionFunctions
 					if(!PlayState.instance.isDead)
 						PlayState.instance.insert(PlayState.instance.members.indexOf(LuaUtils.getLowestCharacterGroup()), obj);
 					else
-						GameOverSubstate.instance.insert(GameOverSubstate.instance.members.indexOf(GameOverSubstate.instance.boyfriend), obj);
+						BoyfriendGameOver.instance.insert(BoyfriendGameOver.instance.members.indexOf(BoyfriendGameOver.instance.boyfriend), obj);
 				}
 			}
 			else FunkinLua.luaTrace('addInstance: Can\'t add what doesn\'t exist~ ($objectName)', false, false, FlxColor.RED);

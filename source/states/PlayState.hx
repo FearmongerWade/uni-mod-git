@@ -29,7 +29,7 @@ import states.editors.ChartingState;
 import states.editors.CharacterEditorState;
 
 import substates.PauseSubState;
-import substates.GameOverSubstate;
+import substates.gameover.BoyfriendGameOver;
 
 #if !flash
 import flixel.addons.display.FlxRuntimeShader;
@@ -314,7 +314,7 @@ class PlayState extends MusicBeatState
 		detailsPausedText = "Paused - " + detailsText;
 		#end
 
-		GameOverSubstate.resetVariables();
+		BoyfriendGameOver.resetVariables();
 		songName = Paths.formatToSongPath(SONG.song);
 		if(SONG.stage == null || SONG.stage.length < 1) {
 			SONG.stage = StageData.vanillaSongStage(songName);
@@ -1926,7 +1926,7 @@ class PlayState extends MusicBeatState
 				FlxTimer.globalManager.clear();
 				FlxTween.globalManager.clear();
 
-				openSubState(new GameOverSubstate());
+				openSubState(new v());
 
 				// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 

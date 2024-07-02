@@ -27,7 +27,7 @@ import states.StoryMenuState;
 import states.FreeplayState;
 
 import substates.PauseSubState;
-import substates.GameOverSubstate;
+import substates.gameover.BoyfriendGameOver;
 
 import psychlua.LuaUtils;
 import psychlua.LuaUtils.LuaTweenOptions;
@@ -1024,7 +1024,7 @@ class FunkinLua {
 				if(PlayState.instance == null || !PlayState.instance.isDead)
 					instance.insert(instance.members.indexOf(LuaUtils.getLowestCharacterGroup()), mySprite);
 				else
-					GameOverSubstate.instance.insert(GameOverSubstate.instance.members.indexOf(GameOverSubstate.instance.boyfriend), mySprite);
+					BoyfriendGameOver.instance.insert(BoyfriendGameOver.instance.members.indexOf(BoyfriendGameOver.instance.boyfriend), mySprite);
 			}
 			return true;
 		});

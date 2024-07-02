@@ -2,7 +2,7 @@ package states.stages;
 
 import states.stages.objects.*;
 import cutscenes.CutsceneHandler;
-import substates.GameOverSubstate;
+import substates.gameover.BoyfriendGameOver;
 import objects.Character;
 
 class Tank extends BaseStage

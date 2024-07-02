@@ -6,7 +6,7 @@ import objects.Character;
 import openfl.display.BlendMode;
 import Type.ValueType;
 
-import substates.GameOverSubstate;
+import substates.gameover.BoyfriendGameOver;
 
 typedef LuaTweenOptions = {
 	type:FlxTweenType,
@@ -266,7 +266,7 @@ class LuaUtils
 	
 	public static function getTargetInstance()
 	{
-		if(PlayState.instance != null) return PlayState.instance.isDead ? GameOverSubstate.instance : PlayState.instance;
+		if(PlayState.instance != null) return PlayState.instance.isDead ? BoyfriendGameOver.instance : PlayState.instance;
 		return MusicBeatState.getState();
 	}
 

@@ -1,4 +1,4 @@
-package substates;
+package substates.gameover;
 
 import backend.WeekData;
 
@@ -9,7 +9,7 @@ import flixel.FlxSubState;
 import states.StoryMenuState;
 import states.FreeplayState;
 
-class GameOverSubstate extends MusicBeatSubstate
+class BoyfriendGameOver extends MusicBeatSubstate
 {
 	public var boyfriend:Character;
 	var retry:FlxSprite;
@@ -30,7 +30,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	public static var loopSoundName:String = 'gameOver';
 	public static var endSoundName:String = 'gameOverEnd';
 
-	public static var instance:GameOverSubstate;
+	public static var instance:BoyfriendGameOver;
 
 	public static function resetVariables() {
 		characterName = 'bf-dead';
