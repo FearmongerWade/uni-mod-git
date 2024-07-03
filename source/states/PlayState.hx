@@ -1926,7 +1926,7 @@ class PlayState extends MusicBeatState
 				FlxTimer.globalManager.clear();
 				FlxTween.globalManager.clear();
 
-				openSubState(new v());
+				openSubState(new BoyfriendGameOver());
 
 				// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
