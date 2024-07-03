@@ -1,5 +1,6 @@
 package states;
 
+import backend.Difficulty;
 import flixel.FlxObject;
 import flixel.effects.FlxFlicker;
 import lime.app.Application;
@@ -166,6 +167,8 @@ class MainMenuState extends MusicBeatState
 
 	function loadSong(songName:String)
 	{
+		Difficulty.resetList();
+
 		persistentUpdate = false;
 		var poop:String = Highscore.formatSong(songName.toLowerCase(), curDifficulty);
 		PlayState.SONG = Song.loadFromJson(poop, songName.toLowerCase());
