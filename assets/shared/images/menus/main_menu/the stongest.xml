@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="the stongest.png">
+	<!-- Created with Adobe Animate version 22.0.5.191 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="spin0000" x="5" y="5" width="300" height="311" frameX="-73" frameY="-13" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0001" x="5" y="5" width="300" height="311" frameX="-73" frameY="-13" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0002" x="310" y="5" width="300" height="311" frameX="-54" frameY="-13" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0003" x="310" y="5" width="300" height="311" frameX="-54" frameY="-13" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0004" x="615" y="5" width="300" height="311" frameX="-70" frameY="-14" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0005" x="615" y="5" width="300" height="311" frameX="-70" frameY="-14" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0006" x="5" y="321" width="300" height="311" frameX="-53" frameY="0" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0007" x="5" y="321" width="300" height="311" frameX="-53" frameY="0" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0008" x="310" y="321" width="300" height="311" frameX="-49" frameY="-7" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0009" x="310" y="321" width="300" height="311" frameX="-49" frameY="-7" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0010" x="615" y="321" width="300" height="311" frameX="-13" frameY="0" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0011" x="615" y="321" width="300" height="311" frameX="-13" frameY="0" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0012" x="5" y="637" width="300" height="311" frameX="0" frameY="-14" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0013" x="5" y="637" width="300" height="311" frameX="0" frameY="-14" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0014" x="310" y="637" width="300" height="311" frameX="-34" frameY="-13" frameWidth="373" frameHeight="325"/>
+	<SubTexture name="spin0015" x="310" y="637" width="300" height="311" frameX="-34" frameY="-13" frameWidth="373" frameHeight="325"/>
+</TextureAtlas>

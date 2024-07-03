@@ -1,5 +1,5 @@
 Menus:
-- port over the title screen
+- port over the title screen [DONE]
 - make assets for the main menu
 - code in the main menu
 - make assets for credits menu (0/6)
