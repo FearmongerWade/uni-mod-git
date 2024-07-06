@@ -1,14 +1,13 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				-9
 			],
-			"anim": "danceRight",
+			"loop": false,
 			"fps": 18,
-			"name": "GF Idle",
+			"anim": "danceRight",
 			"indices": [
 				15,
 				16,
@@ -25,17 +24,17 @@
 				27,
 				28,
 				29
-			]
+			],
+			"name": "GF Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				-9
 			],
-			"anim": "danceLeft",
+			"loop": false,
 			"fps": 18,
-			"name": "GF Idle",
+			"anim": "danceLeft",
 			"indices": [
 				30,
 				0,
@@ -53,29 +52,30 @@
 				12,
 				13,
 				14
-			]
+			],
+			"name": "GF Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-27,
 				-12
 			],
-			"anim": "cheer",
+			"loop": false,
 			"fps": 18,
-			"name": "GF Cheer",
-			"indices": []
+			"anim": "cheer",
+			"indices": [],
+			"name": "GF Cheer"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-8,
 				-42
 			],
-			"anim": "sad",
+			"loop": false,
 			"fps": 18,
-			"name": "GF sad",
-			"indices": []
+			"anim": "sad",
+			"indices": [],
+			"name": "GF sad"
 		}
 	],
 	"vocals_file": "",
@@ -97,6 +97,6 @@
 		0
 	],
 	"sing_duration": 4,
-	"scale": 0.9,
+	"scale": 1,
 	"_editor_isPlayer": false
 }

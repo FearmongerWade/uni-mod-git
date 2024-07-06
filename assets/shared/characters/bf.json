@@ -1,103 +1,103 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				-5,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 18,
-			"name": "Idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				35,
 				3
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 20,
-			"name": "Left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-1,
 				-30
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 20,
-			"name": "Down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-14,
 				44
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 20,
-			"name": "Up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-48,
 				-7
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 20,
-			"name": "Right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				40,
 				4
 			],
-			"anim": "singLEFTmiss",
+			"loop": false,
 			"fps": 20,
-			"name": "MISS Left",
-			"indices": []
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "MISS Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				-30
 			],
-			"anim": "singDOWNmiss",
+			"loop": false,
 			"fps": 20,
-			"name": "MISS Down",
-			"indices": []
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "MISS Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-14,
 				46
 			],
-			"anim": "singUPmiss",
+			"loop": false,
 			"fps": 20,
-			"name": "MISS Up",
-			"indices": []
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "MISS Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-44,
 				-8
 			],
-			"anim": "singRIGHTmiss",
+			"loop": false,
 			"fps": 20,
-			"name": "MISS Right",
-			"indices": []
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "MISS Right"
 		}
 	],
 	"vocals_file": "",
@@ -116,7 +116,7 @@
 	],
 	"camera_position": [
 		30,
-		30
+		10
 	],
 	"sing_duration": 4,
 	"scale": 1.1,
