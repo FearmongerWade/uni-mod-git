@@ -1,9 +1,9 @@
 {
 	"song": {
 		"speed": 2.8,
-		"stage": "Room",
-		"player1": "Bf",
-		"player2": "Uni",
+		"stage": "room",
+		"player1": "bf",
+		"player2": "uni",
 		"events": [],
 		"notes": [
 			{
@@ -2372,7 +2372,7 @@
 				"mustHitSection": true
 			}
 		],
-		"gfVersion": "Gf",
+		"gfVersion": "gf",
 		"bpm": 145,
 		"needsVoices": true,
 		"song": "Uni"

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sora.png">
+	<!-- Created with Adobe Animate version 22.0.5.191 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="sora0000" x="5" y="5" width="322" height="290"/>
+	<SubTexture name="sora0001" x="5" y="5" width="322" height="290"/>
+	<SubTexture name="sora0002" x="332" y="5" width="315" height="289" frameX="-5" frameY="-1" frameWidth="322" frameHeight="290"/>
+	<SubTexture name="sora0003" x="332" y="5" width="315" height="289" frameX="-5" frameY="-1" frameWidth="322" frameHeight="290"/>
+	<SubTexture name="sora0004" x="652" y="5" width="310" height="290" frameX="-6" frameY="0" frameWidth="322" frameHeight="290"/>
+	<SubTexture name="sora0005" x="652" y="5" width="310" height="290" frameX="-6" frameY="0" frameWidth="322" frameHeight="290"/>
+	<SubTexture name="sora0006" x="652" y="5" width="310" height="290" frameX="-6" frameY="0" frameWidth="322" frameHeight="290"/>
+	<SubTexture name="sora0007" x="652" y="5" width="310" height="290" frameX="-6" frameY="0" frameWidth="322" frameHeight="290"/>
+	<SubTexture name="sora0008" x="652" y="5" width="310" height="290" frameX="-6" frameY="0" frameWidth="322" frameHeight="290"/>
+	<SubTexture name="sora0009" x="652" y="5" width="310" height="290" frameX="-6" frameY="0" frameWidth="322" frameHeight="290"/>
+	<SubTexture name="sora0010" x="652" y="5" width="310" height="290" frameX="-6" frameY="0" frameWidth="322" frameHeight="290"/>
+	<SubTexture name="sora0011" x="652" y="5" width="310" height="290" frameX="-6" frameY="0" frameWidth="322" frameHeight="290"/>
+	<SubTexture name="sora0012" x="652" y="5" width="310" height="290" frameX="-6" frameY="0" frameWidth="322" frameHeight="290"/>
+	<SubTexture name="sora0013" x="652" y="5" width="310" height="290" frameX="-6" frameY="0" frameWidth="322" frameHeight="290"/>
+</TextureAtlas>

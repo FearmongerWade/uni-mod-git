@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="yoru.png">
+	<!-- Created with Adobe Animate version 22.0.5.191 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="yoru0000" x="5" y="5" width="394" height="248" frameX="0" frameY="-10" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0001" x="5" y="5" width="394" height="248" frameX="0" frameY="-10" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0002" x="404" y="5" width="391" height="255" frameX="-1" frameY="-3" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0003" x="404" y="5" width="391" height="255" frameX="-1" frameY="-3" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0004" x="800" y="5" width="387" height="258" frameX="-3" frameY="0" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0005" x="800" y="5" width="387" height="258" frameX="-3" frameY="0" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0006" x="800" y="5" width="387" height="258" frameX="-3" frameY="0" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0007" x="800" y="5" width="387" height="258" frameX="-3" frameY="0" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0008" x="800" y="5" width="387" height="258" frameX="-3" frameY="0" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0009" x="800" y="5" width="387" height="258" frameX="-3" frameY="0" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0010" x="800" y="5" width="387" height="258" frameX="-3" frameY="0" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0011" x="800" y="5" width="387" height="258" frameX="-3" frameY="0" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0012" x="800" y="5" width="387" height="258" frameX="-3" frameY="0" frameWidth="394" frameHeight="258"/>
+	<SubTexture name="yoru0013" x="800" y="5" width="387" height="258" frameX="-3" frameY="0" frameWidth="394" frameHeight="258"/>
+</TextureAtlas>

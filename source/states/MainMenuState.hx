@@ -61,7 +61,7 @@ class MainMenuState extends MusicBeatState
 		vinyl.antialiasing = ClientPrefs.data.antialiasing;
 		add(vinyl);
 
-		var uni = new FlxSprite(750, 230);
+		var uni = new FlxSprite(750, 225);
 		uni.frames = Paths.getSparrowAtlas(path + 'the strongest');
 		uni.animation.addByPrefix('guh', 'spin', 18, true);
 		uni.animation.play('guh');
