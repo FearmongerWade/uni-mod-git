@@ -68,11 +68,11 @@ class MainMenuState extends MusicBeatState
 		uni.antialiasing = ClientPrefs.data.antialiasing;
 		add(uni);
 
-		var upArrow = new FlxSprite(270, 50).loadGraphic(Paths.image(path + 'arrow'));
+		var upArrow = new FlxSprite(300, 50).loadGraphic(Paths.image(path + 'arrow'));
 		upArrow.antialiasing = ClientPrefs.data.antialiasing;
 		add(upArrow);
 
-		var downArrow = new FlxSprite(270, 580).loadGraphic(Paths.image(path + 'arrow'));
+		var downArrow = new FlxSprite(300, 580).loadGraphic(Paths.image(path + 'arrow'));
 		downArrow.antialiasing = ClientPrefs.data.antialiasing;
 		downArrow.flipY = true;
 		add(downArrow);
