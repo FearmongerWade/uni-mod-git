@@ -1,7 +1,7 @@
 {
 	"song": {
-		"player1": "bf",
-		"player2": "dad",
+		"player1": "gf-cute",
+		"player2": "uni-cute",
 		"events": [],
 		"notes": [
 			{
@@ -3376,10 +3376,10 @@
 			}
 		],
 		"gfVersion": "gf",
-		"song": "paws",
+		"song": "Paws",
 		"needsVoices": true,
-		"stage": "stage",
+		"stage": "rooftop",
 		"bpm": 155,
-		"speed": 2.7
+		"speed": 3.0
 	}
 }

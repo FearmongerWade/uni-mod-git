@@ -10,7 +10,7 @@ function onCreatePost()
 
     makeLuaSprite('clickable', '', 670, 310)
     makeGraphic('clickable', 34, 16, 'FFFFFF')
-    setProperty('clickable.alpha', 0.0001)
+    --setProperty('clickable.alpha', 0.0001)
     addLuaSprite('clickable')
 
     makeAnimatedLuaSprite('girlfr', path..'littlegf', 860, 340)
@@ -21,7 +21,7 @@ function onCreatePost()
 
     -- Yeah --
 
-    triggerEvent('Camera Follow Pos', 700, 350)
+    triggerEvent('Camera Follow Pos', 670, 350)
 end
 
 function onBeatHit()

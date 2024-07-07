@@ -1,9 +1,9 @@
 {
 	"song": {
 		"speed": 2.7,
-		"stage": "Fnaf4",
-		"player1": "LilBf",
-		"player2": "TuxedoUni",
+		"stage": "fnaf4",
+		"player1": "bf-scary",
+		"player2": "uni-scary",
 		"events": [],
 		"notes": [
 			{
@@ -3752,7 +3752,7 @@
 				"mustHitSection": true
 			}
 		],
-		"gfVersion": "gf",
+		"gfVersion": "gf-scary",
 		"bpm": 168,
 		"needsVoices": true,
 		"song": "Nightmare"
