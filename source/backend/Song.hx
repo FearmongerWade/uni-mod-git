@@ -8,6 +8,7 @@ import backend.Section;
 typedef SwagSong =
 {
 	var song:String;
+	var composer:String;
 	var notes:Array<SwagSection>;
 	var events:Array<Dynamic>;
 	var bpm:Float;
@@ -33,6 +34,7 @@ typedef SwagSong =
 class Song
 {
 	public var song:String;
+	public var composer:String;
 	public var notes:Array<SwagSection>;
 	public var events:Array<Dynamic>;
 	public var bpm:Float;

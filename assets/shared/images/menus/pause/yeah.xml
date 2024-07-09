@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="yeah.png">
+	<!-- Adobe animate suck my dick -->
+	<SubTexture name="uniDance0000" x="0" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0001" x="0" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0002" x="0" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0003" x="0" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0004" x="0" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0005" x="460" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0006" x="460" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0007" x="460" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0008" x="460" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0009" x="460" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0010" x="460" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0011" x="460" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0012" x="460" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0013" x="460" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0014" x="460" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0015" x="920" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0016" x="920" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0017" x="920" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0018" x="920" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0019" x="920" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0020" x="1380" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0021" x="1380" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0022" x="1380" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0023" x="1380" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0024" x="1380" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0025" x="1380" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0026" x="1380" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0027" x="1380" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0028" x="1380" y="0" width="435" height="435"/>
+	<SubTexture name="uniDance0029" x="1380" y="0" width="435" height="435"/>
+</TextureAtlas>

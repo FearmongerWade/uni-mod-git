@@ -196,6 +196,7 @@ class ChartingState extends MusicBeatState
 		{
 			Difficulty.resetList();
 			_song = {
+				composer: 'Kawai Sprite',
 				song: 'Test',
 				notes: [],
 				events: [],

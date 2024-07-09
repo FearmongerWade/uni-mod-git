@@ -1,6 +1,7 @@
 {
 	"song": {
 		"speed": 2.8,
+		"composer": "Maiandraw",
 		"stage": "room",
 		"player1": "bf",
 		"player2": "uni",

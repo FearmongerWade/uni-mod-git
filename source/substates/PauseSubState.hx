@@ -10,8 +10,7 @@ import flixel.addons.display.FlxGridOverlay;
 
 import flixel.util.FlxStringUtil;
 
-import states.StoryMenuState;
-import states.FreeplayState;
+import states.MainMenuState;
 import options.OptionsState;
 
 class PauseSubState extends MusicBeatSubstate
@@ -27,6 +26,9 @@ class PauseSubState extends MusicBeatSubstate
 	var selector:FlxText;
 	var info:FlxText;
 
+	var uni:FlxSprite;
+	var danced:Bool = false;
+
 	override function create()
 	{
 		/*
@@ -34,17 +36,10 @@ class PauseSubState extends MusicBeatSubstate
 			I adjusted some of it :P
 		*/
 
-		pauseMusic = new FlxSound();
-		try
-		{
-			var pauseSong:String = getPauseSong();
-			if(pauseSong != null) pauseMusic.loadEmbedded(Paths.music(pauseSong), true, true);
-		}
-		catch(e:Dynamic) {}
-		pauseMusic.volume = 0;
-		pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseMusic.length / 2)));
+		FlxG.sound.playMusic(Paths.music('pause'), 0);
 
-		FlxG.sound.list.add(pauseMusic);
+		Conductor.bpm = 82;
+		FlxG.sound.music.fadeIn(10, 0, 0.7);
 
 		bg = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
 		bg.scale.set(FlxG.width, FlxG.height);
@@ -59,45 +54,58 @@ class PauseSubState extends MusicBeatSubstate
 		backdrop.scrollFactor.set();
 		add(backdrop);
 
-		info = new FlxText(20, 15, 0, PlayState.SONG.song, 32);
+		info = new FlxText(890, 15, 0, "", 32);
 		info.scrollFactor.set();
 		info.setFormat(Paths.font("phantommuff.ttf"), 32);
-		info.updateHitbox();
+		info.alignment = RIGHT;
 		add(info);
-		info.x = FlxG.width - (info.width + 20);
+		info.text = "Song: "+PlayState.SONG.song+"\nComposer: "+PlayState.SONG.composer+"\nDeaths: "+PlayState.deathCounter;
 
 		grpMenuShit = new FlxTypedGroup<FlxText>();
 		add(grpMenuShit);
 
 		for (i in 0...menuItems.length)
 		{
-			var item = new FlxText(0, ((i + 1) * 80) + 135, 0, menuItems[i], 40);
+			var item = new FlxText(40, ((i + 1) * 80) + 135, 0, menuItems[i], 40);
 			item.font = Paths.font('PhantomMuff.ttf');
-			item.borderStyle = OUTLINE;
-			item.borderSize = 3;
-			//item.alpha = 0;
+			item.alpha = 0;
 			item.scrollFactor.set();
 			item.antialiasing = true;
 			item.ID = i;
 			grpMenuShit.add(item);
+
+			FlxTween.tween(item, {alpha:1}, 0.3 + (i*0.25), {
+				ease: FlxEase.expoInOut
+			});
 		}
 
-		selector = new FlxText(0, 0, 0, '<', 40);
+		selector = new FlxText(10, 0, 0, '>', 40);
 		selector.font = Paths.font('PhantomMuff.ttf');
-		selector.borderStyle = OUTLINE;
-		selector.borderSize = 3;
-		//selector.alpha = 0;
+		selector.alpha = 0;
 		selector.antialiasing = true;
+		selector.scrollFactor.set();
 		add(selector);
+
+		uni = new FlxSprite(700);
+		uni.frames = Paths.getSparrowAtlas('menus/pause/yeah');
+		uni.animation.addByIndices('danceLeft', 'uniDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+		uni.animation.addByIndices('danceRight', 'uniDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+		uni.antialiasing = ClientPrefs.data.antialiasing;
+		uni.alpha = 0;
+		uni.screenCenter(Y);
+		add(uni);
 
 		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(backdrop, {alpha: 1.0}, 0.4, {ease: FlxEase.quartInOut});
-		//FlxTween.tween(info, {alpha: 1, y: 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
-		//FlxTween.tween(selector, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
+		FlxTween.tween(info, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
+		FlxTween.tween(selector, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
+		FlxTween.tween(uni, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 
 		super.create();
+
+		changeSelection();
 	}
 	
 	function getPauseSong()
@@ -113,9 +121,8 @@ class PauseSubState extends MusicBeatSubstate
 	var cantUnpause:Float = 0.1;
 	override function update(elapsed:Float)
 	{
-		cantUnpause -= elapsed;
-		if (pauseMusic.volume < 0.5)
-			pauseMusic.volume += 0.01 * elapsed;
+		if (FlxG.sound.music != null)
+			Conductor.songPosition = FlxG.sound.music.time;
 
 		super.update(elapsed);
 
@@ -142,23 +149,12 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.paused = true; // For lua
 					PlayState.instance.vocals.volume = 0;
 					MusicBeatState.switchState(new OptionsState());
-					if(ClientPrefs.data.pauseMusic != 'None')
-					{
-						FlxG.sound.playMusic(Paths.music(Paths.formatToSongPath(ClientPrefs.data.pauseMusic)), pauseMusic.volume);
-						FlxTween.tween(FlxG.sound.music, {volume: 1}, 0.8);
-						FlxG.sound.music.time = pauseMusic.time;
-					}
 					OptionsState.onPlayState = true;
 				case "Exit":
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
-
-					Mods.loadTopMod();
-					if(PlayState.isStoryMode)
-						MusicBeatState.switchState(new StoryMenuState());
-					else 
-						MusicBeatState.switchState(new FreeplayState());
+					MusicBeatState.switchState(new MainMenuState());
 
 					FlxG.sound.playMusic(Paths.music('freakyMenu'));
 					PlayState.changedDifficulty = false;
@@ -166,6 +162,20 @@ class PauseSubState extends MusicBeatSubstate
 					FlxG.camera.followLerp = 0;
 			}
 		}
+	}
+
+	override function beatHit() 
+	{
+		super.beatHit();
+
+		if(uni != null) 
+		{
+			danced = !danced;
+			if (danced)
+				uni.animation.play('danceRight');
+			else
+				uni.animation.play('danceLeft');
+		}	
 	}
 
 	public static function restartSong(noTrans:Bool = false)
@@ -184,8 +194,7 @@ class PauseSubState extends MusicBeatSubstate
 
 	override function destroy()
 	{
-		pauseMusic.destroy();
-
+		FlxG.sound.music.stop();
 		super.destroy();
 	}
 
@@ -200,14 +209,10 @@ class PauseSubState extends MusicBeatSubstate
 		if (curSelected >= menuItems.length)
 			curSelected = 0;
 
-		var bullShit:Int = 0;
-
-		//FlxTween.tween(selector, {x: (menuItems[curSelected].x + menuItems[curSelected].width) + 10}, 0.1, {ease: FlxEase.quadOut});
-
-		for (item in grpMenuShit.members)
+		grpMenuShit.forEach(function(spr:FlxSprite)
 		{
-			item.y = bullShit - curSelected;
-			bullShit++;
-		}
+			if (spr.ID == curSelected)
+				selector.y = spr.y;
+		});
 	}
 }
