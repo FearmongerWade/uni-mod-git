@@ -36,10 +36,17 @@ class PauseSubState extends MusicBeatSubstate
 			I adjusted some of it :P
 		*/
 
-		FlxG.sound.playMusic(Paths.music('pause'), 0);
+		pauseMusic = new FlxSound();
+		try
+		{
+			var pauseSong:String = Paths.formatToSongPath('pause');
+			if(pauseSong != null) pauseMusic.loadEmbedded(Paths.music(pauseSong), true, true);
+		}
+		catch(e:Dynamic) {}
+		pauseMusic.volume = 0;
+		pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseMusic.length / 2)));
 
-		Conductor.bpm = 82;
-		FlxG.sound.music.fadeIn(10, 0, 0.7);
+		FlxG.sound.list.add(pauseMusic);
 
 		bg = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
 		bg.scale.set(FlxG.width, FlxG.height);
@@ -88,8 +95,8 @@ class PauseSubState extends MusicBeatSubstate
 
 		uni = new FlxSprite(700);
 		uni.frames = Paths.getSparrowAtlas('menus/pause/yeah');
-		uni.animation.addByIndices('danceLeft', 'uniDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-		uni.animation.addByIndices('danceRight', 'uniDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+		uni.animation.addByPrefix('dance', 'uniDance', 19, true);
+		uni.animation.play('dance');
 		uni.antialiasing = ClientPrefs.data.antialiasing;
 		uni.alpha = 0;
 		uni.screenCenter(Y);
@@ -107,22 +114,14 @@ class PauseSubState extends MusicBeatSubstate
 
 		changeSelection();
 	}
-	
-	function getPauseSong()
-	{
-		var formattedSongName:String = (songName != null ? Paths.formatToSongPath(songName) : '');
-		var formattedPauseMusic:String = Paths.formatToSongPath(ClientPrefs.data.pauseMusic);
-		if(formattedSongName == 'none' || (formattedSongName != 'none' && formattedPauseMusic == 'none')) return null;
-
-		return (formattedSongName != '') ? formattedSongName : formattedPauseMusic;
-	}
 
 	var holdTime:Float = 0;
 	var cantUnpause:Float = 0.1;
 	override function update(elapsed:Float)
 	{
-		if (FlxG.sound.music != null)
-			Conductor.songPosition = FlxG.sound.music.time;
+		cantUnpause -= elapsed;
+		if (pauseMusic.volume < 0.5)
+			pauseMusic.volume += 0.05 * elapsed;
 
 		super.update(elapsed);
 
@@ -164,20 +163,6 @@ class PauseSubState extends MusicBeatSubstate
 		}
 	}
 
-	override function beatHit() 
-	{
-		super.beatHit();
-
-		if(uni != null) 
-		{
-			danced = !danced;
-			if (danced)
-				uni.animation.play('danceRight');
-			else
-				uni.animation.play('danceLeft');
-		}	
-	}
-
 	public static function restartSong(noTrans:Bool = false)
 	{
 		PlayState.instance.paused = true; // For lua
@@ -194,7 +179,8 @@ class PauseSubState extends MusicBeatSubstate
 
 	override function destroy()
 	{
-		FlxG.sound.music.stop();
+		pauseMusic.destroy();
+
 		super.destroy();
 	}
 
@@ -212,7 +198,8 @@ class PauseSubState extends MusicBeatSubstate
 		grpMenuShit.forEach(function(spr:FlxSprite)
 		{
 			if (spr.ID == curSelected)
-				selector.y = spr.y;
+				FlxTween.tween(selector, {y: spr.y}, 0.1, {ease: FlxEase.quadInOut});
+				//selector.y = spr.y;
 		});
 	}
 }
