@@ -4,6 +4,8 @@ import flixel.addons.transition.FlxTransitionableState;
 
 class TitleState extends MusicBeatState
 {
+    var loadingArt:FlxSprite;
+
 	override public function create():Void
 	{
 		Paths.clearStoredMemory();
@@ -11,18 +13,27 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
-		if(FlxG.save.data.flashing == null && !FlashingState.leftState) 
-		{
-			FlxTransitionableState.skipNextTransIn = true;
-			FlxTransitionableState.skipNextTransOut = true;
-			MusicBeatState.switchState(new FlashingState());
-		}
-		else 
-		{
-			new FlxTimer().start(1, function(tmr:FlxTimer) {
-				startIntro();
-			});
-		}
+        // -- watermark... -- //
+
+		loadingArt = new FlxSprite().loadGraphic(Paths.image('menus/splash'));
+		loadingArt.antialiasing = ClientPrefs.data.antialiasing;
+		add(loadingArt);
+
+        new FlxTimer().start(3, function(tmr:FlxTimer) {
+            if(FlxG.save.data.flashing == null && !FlashingState.leftState) 
+		    {
+		    	FlxTransitionableState.skipNextTransIn = true;
+		    	FlxTransitionableState.skipNextTransOut = true;
+		    	MusicBeatState.switchState(new FlashingState());
+		    }
+		    else 
+		    {
+		    	new FlxTimer().start(1, function(tmr:FlxTimer) {
+		    		startIntro();
+		    	});
+		    }
+        });
+		
 	}
 
 	var oneboob:FlxSprite;
@@ -35,8 +46,8 @@ class TitleState extends MusicBeatState
 
 	function startIntro()
 	{
+        loadingArt.alpha = 0.0000001;
 		FlxG.sound.play(Paths.music('titleMenu'));
-
 		persistentUpdate = true;
 
 		oneboob = new FlxSprite().loadGraphic(Paths.image(path + FlxG.random.int(1, 21)));
