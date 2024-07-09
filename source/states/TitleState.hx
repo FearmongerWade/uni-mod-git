@@ -19,20 +19,18 @@ class TitleState extends MusicBeatState
 		loadingArt.antialiasing = ClientPrefs.data.antialiasing;
 		add(loadingArt);
 
-        new FlxTimer().start(3, function(tmr:FlxTimer) {
-            if(FlxG.save.data.flashing == null && !FlashingState.leftState) 
-		    {
-		    	FlxTransitionableState.skipNextTransIn = true;
-		    	FlxTransitionableState.skipNextTransOut = true;
-		    	MusicBeatState.switchState(new FlashingState());
-		    }
-		    else 
-		    {
-		    	new FlxTimer().start(1, function(tmr:FlxTimer) {
-		    		startIntro();
-		    	});
-		    }
-        });
+        if(FlxG.save.data.flashing == null && !FlashingState.leftState) 
+		{
+			FlxTransitionableState.skipNextTransIn = true;
+			FlxTransitionableState.skipNextTransOut = true;
+			MusicBeatState.switchState(new FlashingState());
+		}
+		else 
+		{
+			new FlxTimer().start(3, function(tmr:FlxTimer) {
+				startIntro();
+			});
+		}
 		
 	}
 

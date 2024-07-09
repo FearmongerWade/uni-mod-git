@@ -36,8 +36,8 @@ class FlashingState extends MusicBeatState
 			var back:Bool = controls.BACK;
 			if (controls.ACCEPT || back) {
 				leftState = true;
-				FlxTransitionableState.skipNextTransIn = true;
-				FlxTransitionableState.skipNextTransOut = true;
+				//FlxTransitionableState.skipNextTransIn = true;
+				//FlxTransitionableState.skipNextTransOut = true;
 				if(!back) {
 					ClientPrefs.data.flashing = false;
 					ClientPrefs.saveSettings();
