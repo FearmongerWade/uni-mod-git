@@ -8,6 +8,10 @@ import states.InitState;
 
 // Add a variable here and it will get automatically saved
 @:structInit class SaveVariables {
+	// -- VIDEO SETTING VARIABLES -- //
+
+	public var skipSplash:Bool = false;
+	
 	public var downScroll:Bool = false;
 	public var middleScroll:Bool = false;
 	public var opponentStrums:Bool = true;

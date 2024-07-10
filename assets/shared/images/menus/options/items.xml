@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with my mind
+-->
+<TextureAtlas imagePath="items.png" width="336" height="281">
+	<SubTexture name="audio" x="5" y="116" width="198" height="50" frameX="-0" frameY="-0" frameWidth="198" frameHeight="50"/>
+	<SubTexture name="gameplay" x="5" y="5" width="326" height="50" frameX="-0" frameY="-0" frameWidth="326" frameHeight="50"/>
+	<SubTexture name="input" x="5" y="226" width="181" height="50" frameX="-0" frameY="-0" frameWidth="181" frameHeight="50"/>
+	<SubTexture name="loading" x="5" y="60" width="278" height="51" frameX="-0" frameY="-0" frameWidth="278" frameHeight="51"/>
+	<SubTexture name="video" x="5" y="171" width="197" height="50" frameX="-0" frameY="-0" frameWidth="197" frameHeight="50"/>
+</TextureAtlas>

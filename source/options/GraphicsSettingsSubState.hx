@@ -1,5 +1,6 @@
 package options;
 
+import options.Option;
 import objects.Character;
 
 class GraphicsSettingsSubState extends BaseOptionsMenu
@@ -59,6 +60,12 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		option.displayFormat = '%v FPS';
 		option.onChange = onChangeFramerate;
 		#end
+
+		var option:Option = new Option('Skip Splash',
+			"Check this to skip the loading art when you start the game *cries*",
+			'skipSplash',
+			'bool');
+		addOption(option);
 
 		super();
 		insert(1, boyfriend);

@@ -68,6 +68,9 @@ class InitState extends flixel.FlxState
 		Paths.clearUnusedMemory();
         FlxG.mouse.visible = false;
 
-		MusicBeatState.switchState(new TitleState());
+		if (ClientPrefs.data.skipSplash)
+			MusicBeatState.switchState(new TitleState());
+		else
+			MusicBeatState.switchState(new SplashState());
     }
 }

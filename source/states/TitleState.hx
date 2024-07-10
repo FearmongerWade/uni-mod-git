@@ -13,12 +13,6 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
-        // -- watermark... -- //
-
-		loadingArt = new FlxSprite().loadGraphic(Paths.image('menus/splash'));
-		loadingArt.antialiasing = ClientPrefs.data.antialiasing;
-		add(loadingArt);
-
         if(FlxG.save.data.flashing == null && !FlashingState.leftState) 
 		{
 			FlxTransitionableState.skipNextTransIn = true;
@@ -26,12 +20,9 @@ class TitleState extends MusicBeatState
 			MusicBeatState.switchState(new FlashingState());
 		}
 		else 
-		{
-			new FlxTimer().start(3, function(tmr:FlxTimer) {
+			new FlxTimer().start(1, function(tmr:FlxTimer) {
 				startIntro();
 			});
-		}
-		
 	}
 
 	var oneboob:FlxSprite;
@@ -44,7 +35,6 @@ class TitleState extends MusicBeatState
 
 	function startIntro()
 	{
-        loadingArt.alpha = 0.0000001;
 		FlxG.sound.play(Paths.music('titleMenu'));
 		persistentUpdate = true;
 
