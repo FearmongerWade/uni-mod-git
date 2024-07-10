@@ -61,19 +61,33 @@ class PauseSubState extends MusicBeatSubstate
 		backdrop.scrollFactor.set();
 		add(backdrop);
 
-		info = new FlxText(890, 15, 0, "", 32);
-		info.scrollFactor.set();
-		info.setFormat(Paths.font("phantommuff.ttf"), 32);
-		info.alignment = RIGHT;
-		add(info);
-		info.text = "Song: "+PlayState.SONG.song+"\nComposer: "+PlayState.SONG.composer+"\nDeaths: "+PlayState.deathCounter;
+		var songinfo = new FlxText(20, 15, 0, "Song: "+PlayState.SONG.song, 32);
+		songinfo.scrollFactor.set();
+		songinfo.setFormat(Paths.font("phantommuff.ttf"), 32);
+		songinfo.alignment = RIGHT;
+		add(songinfo);
+		songinfo.x = FlxG.width - (songinfo.width + 20);
+
+		var composerName = new FlxText(20, 15+34, 0, "Composer: "+PlayState.SONG.composer, 32);
+		composerName.scrollFactor.set();
+		composerName.setFormat(Paths.font("phantommuff.ttf"), 32);
+		composerName.alignment = RIGHT;
+		add(composerName);
+		composerName.x = FlxG.width - (composerName.width + 20);
+
+		var deaths = new FlxText(20, 15+68, 0, "Deaths: "+PlayState.deathCounter, 32);
+		deaths.scrollFactor.set();
+		deaths.setFormat(Paths.font("phantommuff.ttf"), 32);
+		deaths.alignment = RIGHT;
+		add(deaths);
+		deaths.x = FlxG.width - (deaths.width + 20);
 
 		grpMenuShit = new FlxTypedGroup<FlxText>();
 		add(grpMenuShit);
 
 		for (i in 0...menuItems.length)
 		{
-			var item = new FlxText(40, ((i + 1) * 80) + 135, 0, menuItems[i], 40);
+			var item = new FlxText(60, ((i + 1) * 80) + 135, 0, menuItems[i], 40);
 			item.font = Paths.font('PhantomMuff.ttf');
 			item.alpha = 0;
 			item.scrollFactor.set();
@@ -86,7 +100,7 @@ class PauseSubState extends MusicBeatSubstate
 			});
 		}
 
-		selector = new FlxText(10, 0, 0, '>', 40);
+		selector = new FlxText(25, 0, 0, '>', 40);
 		selector.font = Paths.font('PhantomMuff.ttf');
 		selector.alpha = 0;
 		selector.antialiasing = true;
@@ -104,7 +118,6 @@ class PauseSubState extends MusicBeatSubstate
 
 		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(backdrop, {alpha: 1.0}, 0.4, {ease: FlxEase.quartInOut});
-		FlxTween.tween(info, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
 		FlxTween.tween(selector, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(uni, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
 
