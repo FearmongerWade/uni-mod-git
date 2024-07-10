@@ -24,7 +24,6 @@ class PauseSubState extends MusicBeatSubstate
 	var bg:FlxSprite;
 	var backdrop:FlxBackdrop;
 	var selector:FlxText;
-	var info:FlxText;
 
 	var uni:FlxSprite;
 	var danced:Bool = false;
@@ -118,6 +117,9 @@ class PauseSubState extends MusicBeatSubstate
 
 		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(backdrop, {alpha: 1.0}, 0.4, {ease: FlxEase.quartInOut});
+		FlxTween.tween(songinfo, {alpha: 1.0}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
+		FlxTween.tween(composerName, {alpha: 1.0}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.5});
+		FlxTween.tween(deaths, {alpha: 1.0}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
 		FlxTween.tween(selector, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(uni, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
 
