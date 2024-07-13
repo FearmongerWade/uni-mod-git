@@ -1,6 +1,7 @@
 package states;
 
 import flixel.addons.text.FlxTypeText;
+import substates.SpecialThanksSubState;
 
 class CreditsState extends MusicBeatState
 {
@@ -23,7 +24,7 @@ class CreditsState extends MusicBeatState
     var descText:FlxTypeText;
     var descriptions:Array<String> = [
         "- Ghost Bunny -\n\nArtist | Coder | Composer\n\"friday night boobin\"",
-        "- Cryfur -\n\nCharter | GF VA\n\"quote goes here\"",
+        "- Cryfur -\n\nCharter | GF VA\n\"Domain Expansion: Infinite Charting Editor\"",
         "- Maia -\n\nComposer\n\"quote goes here\"",
         "- Mr.Eights -\n\nComposer\n\"hi\"",
         "- MCSteve - \n\nComposer\n\"quote goes here\""
@@ -60,7 +61,7 @@ class CreditsState extends MusicBeatState
             grpOptions.add(spr);
         }
 
-        selector = new FlxSprite(60, 130);
+        selector = new FlxSprite(55, 130);
         selector.frames = Paths.getSparrowAtlas(path+'gwa');
         selector.animation.addByPrefix('loop', 'selector', 12, true);
         selector.animation.play('loop');
@@ -68,18 +69,23 @@ class CreditsState extends MusicBeatState
 
         // -- Portrait related items -- //
 
-        textbox = new FlxSprite(600, 450).loadGraphic(Paths.image(path+'textbox'));
-        textbox.antialiasing = ClientPrefs.data.antialiasing;
-        add(textbox);
-
-        descText = new FlxTypeText(textbox.x+25, textbox.y+15, 500, descriptions[curSelected], 32);
-        descText.setFormat(Paths.font('phantommuff.ttf'), 32, FlxColor.WHITE, CENTER);
-        add(descText);
-
         creditPortrait = new FlxSprite(600, 0);
         creditPortrait.loadGraphic(Paths.image(path+'art/'+creditsNames[curSelected]));
         creditPortrait.antialiasing = ClientPrefs.data.antialiasing;
         add(creditPortrait);
+
+        textbox = new FlxSprite(600, 450).loadGraphic(Paths.image(path+'textbox'));
+        textbox.antialiasing = ClientPrefs.data.antialiasing;
+        add(textbox);
+
+        descText = new FlxTypeText(textbox.x+20, textbox.y+15, 500, descriptions[curSelected], 32);
+        descText.setFormat(Paths.font('phantommuff.ttf'), 32, FlxColor.WHITE, CENTER);
+        add(descText);
+
+        var ctrlText = new FlxText(0, FlxG.height-35, 0, "Press CTRL for the special thanks", 30);
+        ctrlText.font = Paths.font('vcr.ttf');
+        add(ctrlText);
+        ctrlText.x = FlxG.width - ctrlText.width -5;
 
         changeItem();
         super.create();
@@ -93,6 +99,12 @@ class CreditsState extends MusicBeatState
             changeItem(1);
         if (controls.BACK)
             MusicBeatState.switchState(new MainMenuState());
+        if (FlxG.keys.justPressed.CONTROL)
+        {
+            persistentUpdate = false;
+            openSubState(new SpecialThanksSubState());
+            FlxG.sound.play(Paths.sound('scrollMenu'));
+        }
 
         super.update(elapsed);    
     }
@@ -117,8 +129,7 @@ class CreditsState extends MusicBeatState
         grpOptions.forEach(function(spr:FlxSprite)
         {
             if (spr.ID == curSelected)
-                FlxTween.tween(selector, {y: spr.y - 10}, 0.1, {ease:FlxEase.expoInOut});
-                //selector.y = text.y;
+                FlxTween.tween(selector, {y: spr.y - 15}, 0.1, {ease:FlxEase.expoInOut});
         });
     }
 }
