@@ -24,7 +24,7 @@ class HealthIcon extends FlxSprite
 			setPosition(sprTracker.x + sprTracker.width + 12, sprTracker.y - 30);
 	}
 
-	private var iconOffsets:Array<Float> = [0, 0];
+	private var iconOffsets:Array<Float> = [0, 0, 0];
 	public function changeIcon(char:String, ?allowGPU:Bool = true) {
 		if(this.char != char) {
 			var name:String = 'icons/' + char;
@@ -32,12 +32,12 @@ class HealthIcon extends FlxSprite
 			if(!Paths.fileExists('images/' + name + '.png', IMAGE)) name = 'icons/icon-face'; //Prevents crash from missing icon
 			
 			var graphic = Paths.image(name, allowGPU);
-			loadGraphic(graphic, true, Math.floor(graphic.width / 2), Math.floor(graphic.height));
-			iconOffsets[0] = (width - 150) / 2;
+			loadGraphic(graphic, true, Math.floor(graphic.width / 3), Math.floor(graphic.height));
+			iconOffsets[0] = (width - 150) / 3;
 			iconOffsets[1] = (height - 150) / 2;
 			updateHitbox();
 
-			animation.add(char, [0, 1], 0, false, isPlayer);
+			animation.add(char, [0, 1, 2], 0, false, isPlayer);
 			animation.play(char);
 			this.char = char;
 
