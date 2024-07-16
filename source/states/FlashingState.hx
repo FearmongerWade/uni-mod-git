@@ -26,7 +26,7 @@ class FlashingState extends MusicBeatState
 		warnText.screenCenter();
 		add(warnText);
 
-		enter = new FlxSprite(1060, 500).loadGraphic(Paths.image('menus/enter'));
+		enter = new FlxSprite(1070, 500).loadGraphic(Paths.image('menus/enter'));
 		enter.antialiasing = true;
 		enter.scale.set(0.4, 0.4);
 		add(enter);
