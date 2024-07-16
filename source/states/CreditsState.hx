@@ -27,7 +27,7 @@ class CreditsState extends MusicBeatState
     var descriptions:Array<String> = [
         "- Ghost Bunny -\n\nArtist | Coder | Composer\n\"friday night boobin\"",
         "- Cryfur -\n\nCharter | GF VA\n\"Domain Expansion: Infinite Charting Editor\"",
-        "- Maia -\n\nComposer\n\"quote goes here\"",
+        "- Maia -\n\nComposer\n\"dodo\"",
         "- Mr.Eights -\n\nComposer\n\"hi\"",
         "- MCSteve - \n\nComposer\n\"hi\""
     ];
@@ -188,7 +188,7 @@ class CreditsState extends MusicBeatState
             case 1: // Cryfur
                 CoolUtil.browserLoad('https://x.com/CryfurV');
             case 2: // Maia
-                CoolUtil.browserLoad('https://www.youtube.com/channel/UCrcjSB0nFY5vW8urW7f9qOA');
+                CoolUtil.browserLoad('https://x.com/Maiandraw');
             case 3: // Eights
                 CoolUtil.browserLoad('https://x.com/Mr3ights');
             case 4: // Steve
