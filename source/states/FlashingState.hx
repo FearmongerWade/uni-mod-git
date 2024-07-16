@@ -5,9 +5,6 @@ import flixel.FlxSubState;
 import lime.app.Application;
 import flixel.addons.transition.FlxTransitionableState;
 
-import flixel.addons.display.FlxBackdrop;
-import flixel.addons.display.FlxGridOverlay;
-
 class FlashingState extends MusicBeatState
 {
 	public static var leftState:Bool = false;
@@ -20,10 +17,6 @@ class FlashingState extends MusicBeatState
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
-
-		var backdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true, 0x731B1722, 0x0));
-		backdrop.velocity.set(30, 30);
-		add(backdrop);
 
 		warnText = new FlxText(0, 0, FlxG.width,
 			"Warning\nThis mod contains some flashing lights\nAlso adjust your volume so your ears don't explode",
