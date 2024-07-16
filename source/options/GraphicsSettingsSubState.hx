@@ -5,21 +5,13 @@ import objects.Character;
 
 class GraphicsSettingsSubState extends BaseOptionsMenu
 {
-	var antialiasingOption:Int;
-	var boyfriend:Character = null;
 	public function new()
 	{
 		title = 'video';
-		rpcTitle = 'Graphics Settings Menu'; //for Discord Rich Presence
-
-		boyfriend = new Character(840, 170, 'bf', true);
-		boyfriend.setGraphicSize(Std.int(boyfriend.width * 0.75));
-		boyfriend.updateHitbox();
-		boyfriend.dance();
-		boyfriend.animation.finishCallback = function (name:String) boyfriend.dance();
-		boyfriend.visible = false;
+		rpcTitle = 'Video Settings Menu'; //for Discord Rich Presence
 
 		//I'd suggest using "Low Quality" as an example for making your own option since it is the simplest here
+		/*
 		var option:Option = new Option('Low Quality', //Name
 			'If checked, disables some background details,\ndecreases loading times and improves performance.', //Description
 			'lowQuality', //Save data variable name
@@ -39,12 +31,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 			'shaders',
 			'bool');
 		addOption(option);
-
-		var option:Option = new Option('GPU Caching', //Name
-			"If checked, allows the GPU to be used for caching textures, decreasing RAM usage.\nDon't turn this on if you have a shitty Graphics Card.", //Description
-			'cacheOnGPU',
-			'bool');
-		addOption(option);
+		*/
 
 		#if !html5 //Apparently other framerates isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
 		var option:Option = new Option('Framerate',
@@ -61,27 +48,35 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		option.onChange = onChangeFramerate;
 		#end
 
+		#if !mobile
+		var option:Option = new Option('FPS Counter',
+			'If unchecked, hides FPS Counter.',
+			'showFPS',
+			'bool');
+		addOption(option);
+		option.onChange = onChangeFPSCounter;
+		#end
+
+		var option:Option = new Option('GPU Caching', //Name
+			"If checked, allows the GPU to be used for caching textures, decreasing RAM usage.\nDon't turn this on if you have a shitty Graphics Card.", //Description
+			'cacheOnGPU',
+			'bool');
+		addOption(option);
+
 		var option:Option = new Option('Skip Splash',
 			"Check this to skip the loading art when you start the game *cries*",
 			'skipSplash',
 			'bool');
 		addOption(option);
 
+		var option:Option = new Option('Flashing Lights',
+			"Uncheck this if you're sensitive to flashing lights!",
+			'flashing',
+			'bool');
+		addOption(option);
+
 		super();
-		insert(1, boyfriend);
 	}
-
-	function onChangeAntiAliasing()
-	{
-		for (sprite in members)
-		{
-			var sprite:FlxSprite = cast sprite;
-			if(sprite != null && (sprite is FlxSprite) && !(sprite is FlxText)) {
-				sprite.antialiasing = ClientPrefs.data.antialiasing;
-			}
-		}
-	}
-
 	function onChangeFramerate()
 	{
 		if(ClientPrefs.data.framerate > FlxG.drawFramerate)
@@ -96,9 +91,11 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		}
 	}
 
-	override function changeSelection(change:Int = 0)
+	#if !mobile
+	function onChangeFPSCounter()
 	{
-		super.changeSelection(change);
-		boyfriend.visible = (antialiasingOption == curSelected);
+		if(Main.fpsVar != null)
+			Main.fpsVar.visible = ClientPrefs.data.showFPS;
 	}
+	#end
 }

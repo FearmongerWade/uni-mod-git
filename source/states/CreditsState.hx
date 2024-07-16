@@ -188,7 +188,7 @@ class CreditsState extends MusicBeatState
             case 1: // Cryfur
                 CoolUtil.browserLoad('https://x.com/CryfurV');
             case 2: // Maia
-                CoolUtil.browserLoad('');
+                CoolUtil.browserLoad('https://www.youtube.com/channel/UCrcjSB0nFY5vW8urW7f9qOA');
             case 3: // Eights
                 CoolUtil.browserLoad('https://x.com/Mr3ights');
             case 4: // Steve

@@ -7,6 +7,7 @@ import flixel.input.gamepad.FlxGamepadManager;
 
 import objects.CheckboxThingie;
 import objects.AttachedText;
+import objects.AttachedFlxText;
 import options.Option;
 import backend.InputFormatter;
 
@@ -16,9 +17,9 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	private var curSelected:Int = 0;
 	private var optionsArray:Array<Option>;
 
-	private var grpOptions:FlxTypedGroup<Alphabet>;
+	private var grpOptions:FlxTypedGroup<FlxText>;
 	private var checkboxGroup:FlxTypedGroup<CheckboxThingie>;
-	private var grpTexts:FlxTypedGroup<AttachedText>;
+	private var grpTexts:FlxTypedGroup<AttachedFlxText>;
 
 	private var descBox:FlxSprite;
 	private var descText:FlxText;
@@ -27,6 +28,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	public var rpcTitle:String;
 
 	public var bg:FlxSprite;
+	public var titleSprite:FlxSprite;
 	public function new()
 	{
 		super();
@@ -45,37 +47,33 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		add(bg);
 
 		// avoids lagspikes while scrolling through menus!
-		grpOptions = new FlxTypedGroup<Alphabet>();
+		grpOptions = new FlxTypedGroup<FlxText>();
 		add(grpOptions);
 
-		grpTexts = new FlxTypedGroup<AttachedText>();
+		grpTexts = new FlxTypedGroup<AttachedFlxText>();
 		add(grpTexts);
 
 		checkboxGroup = new FlxTypedGroup<CheckboxThingie>();
 		add(checkboxGroup);
 
-		descBox = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
-		descBox.alpha = 0.6;
+		descBox = new FlxSprite(0, FlxG.height - 40).makeGraphic(1280, 40, FlxColor.BLACK);
+		descBox.alpha = 0.25;
 		add(descBox);
 
-		var titleText:Alphabet = new Alphabet(75, 45, title, true);
-		titleText.setScale(0.6);
-		titleText.alpha = 0.4;
-		add(titleText);
+		var titleSprite = new FlxSprite(0, 10).loadGraphic(Paths.image('menus/options/titles/'+title));
+        titleSprite.antialiasing = ClientPrefs.data.antialiasing;
+        titleSprite.screenCenter(X);
+        add(titleSprite);
 
-		descText = new FlxText(50, 600, 1180, "", 32);
-		descText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		descText.scrollFactor.set();
-		descText.borderSize = 2.4;
+		descText = new FlxText(10, FlxG.height - 32, 1100, "", 24);
+		descText.setFormat(Paths.font("vcr.ttf"), 24);
 		add(descText);
 
 		for (i in 0...optionsArray.length)
 		{
-			var optionText:Alphabet = new Alphabet(290, 260, optionsArray[i].name, false);
-			optionText.isMenuItem = true;
-			/*optionText.forceX = 300;
-			optionText.yMult = 90;*/
-			optionText.targetY = i;
+			var optionText = new FlxText(170, 280+(i*60), 0, optionsArray[i].name, 32);
+			optionText.font = Paths.font('phantommuff.ttf');
+			optionText.ID = i;
 			grpOptions.add(optionText);
 
 			if(optionsArray[i].type == 'bool')
@@ -88,14 +86,14 @@ class BaseOptionsMenu extends MusicBeatSubstate
 			else
 			{
 				optionText.x -= 80;
-				optionText.startPosition.x -= 80;
+				//optionText.startPosition.x -= 80;
 				//optionText.xAdd -= 80;
-				var valueText:AttachedText = new AttachedText('' + optionsArray[i].getValue(), optionText.width + 60);
+				var valueText = new AttachedFlxText('' + optionsArray[i].getValue(), optionText.width + 60);
 				valueText.sprTracker = optionText;
 				valueText.copyAlpha = true;
 				valueText.ID = i;
 				grpTexts.add(valueText);
-				optionsArray[i].child = valueText;
+				//optionsArray[i].child = valueText;
 			}
 			//optionText.snapToPosition(); //Don't ignore me when i ask for not making a fucking pull request to uncomment this line ok
 			updateTextFrom(optionsArray[i]);
@@ -404,23 +402,23 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				text = InputFormatter.getGamepadName(FlxGamepadInputID.fromString(text));
 		}
 
-		var bind:AttachedText = cast option.child;
-		var attach:AttachedText = new AttachedText(text, bind.offsetX);
-		attach.sprTracker = bind.sprTracker;
-		attach.copyAlpha = true;
+		var bind:AttachedFlxText = cast option.child;
+		var attach = new AttachedFlxText(text, bind.offsetX);
+		/*attach.sprTracker = bind.sprTracker;
+		attach.copyAlpha = true;*/
 		attach.ID = bind.ID;
-		playstationCheck(attach);
-		attach.scaleX = Math.min(1, MAX_KEYBIND_WIDTH / attach.width);
+		//playstationCheck(attach);
+		attach.scale.x = Math.min(1, MAX_KEYBIND_WIDTH / attach.width);
 		attach.x = bind.x;
 		attach.y = bind.y;
 
-		option.child = attach;
+		//option.child = attach;
 		grpTexts.insert(grpTexts.members.indexOf(bind), attach);
 		grpTexts.remove(bind);
 		bind.destroy();
 	}
 
-	function playstationCheck(alpha:Alphabet)
+	/*function playstationCheck(alpha:Alphabet)
 	{
 		if(!controls.controllerMode) return;
 
@@ -439,7 +437,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 					letter.offset.y -= 5;
 			}
 		}
-	}
+	}*/
 
 	function closeBinding()
 	{
@@ -472,34 +470,24 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	function changeSelection(change:Int = 0)
 	{
 		curSelected += change;
+
 		if (curSelected < 0)
 			curSelected = optionsArray.length - 1;
 		else if (curSelected >= optionsArray.length)
 			curSelected = 0;
 
+		for (item in grpOptions)
+			item.alpha = item.ID == curSelected ? 1 : 0.6;
+
 		descText.text = optionsArray[curSelected].description;
-		descText.screenCenter(Y);
-		descText.y += 270;
 
 		var bullShit:Int = 0;
 
-		for (item in grpOptions.members)
-		{
-			item.targetY = bullShit - curSelected;
-			bullShit++;
-
-			item.alpha = 0.6;
-			if (item.targetY == 0) item.alpha = 1;
-		}
 		for (text in grpTexts)
 		{
 			text.alpha = 0.6;
 			if(text.ID == curSelected) text.alpha = 1;
 		}
-
-		descBox.setPosition(descText.x - 10, descText.y - 10);
-		descBox.setGraphicSize(Std.int(descText.width + 20), Std.int(descText.height + 25));
-		descBox.updateHitbox();
 
 		curOption = optionsArray[curSelected]; //shorter lol
 		FlxG.sound.play(Paths.sound('scrollMenu'));

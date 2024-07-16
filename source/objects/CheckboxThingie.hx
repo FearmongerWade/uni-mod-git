@@ -17,6 +17,7 @@ class CheckboxThingie extends FlxSprite
 		animation.addByPrefix("checked", "selected", 24, false);
 
 		antialiasing = ClientPrefs.data.antialiasing;
+		scale.set(0.9, 0.9);
 		updateHitbox();
 
 		animationFinished(checked ? 'checking' : 'unchecking');
@@ -26,7 +27,7 @@ class CheckboxThingie extends FlxSprite
 
 	override function update(elapsed:Float) {
 		if (sprTracker != null) {
-			setPosition(sprTracker.x - 110 + offsetX, sprTracker.y + 30 + offsetY);
+			setPosition(sprTracker.x - 110 + offsetX, sprTracker.y - 20 + offsetY);
 			if(copyAlpha) {
 				alpha = sprTracker.alpha;
 			}
