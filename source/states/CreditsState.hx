@@ -7,6 +7,8 @@ class CreditsState extends MusicBeatState
 {
     var curSelected:Int = 0;
     var path:String = "menus/credits/";
+    public static var firstStart:Bool = true;
+    var trans:Bool = false;
 
     private var grpOptions:FlxTypedGroup<FlxSprite>;
     var creditsNames:Array<String> = [
@@ -59,6 +61,20 @@ class CreditsState extends MusicBeatState
             spr.antialiasing = ClientPrefs.data.antialiasing;
             spr.ID = i;
             grpOptions.add(spr);
+
+            if (firstStart)
+            {
+                spr.x -= 600;
+                FlxTween.tween(spr, {x:80}, 0.8 + (i*0.25), {
+                    ease:FlxEase.expoInOut,
+                    onComplete: function(brah:FlxTween)
+                    {
+                        firstStart = false;
+                    }
+                });
+            }
+            else 
+                spr.x = 80;
         }
 
         selector = new FlxSprite(55, 130);
@@ -87,27 +103,55 @@ class CreditsState extends MusicBeatState
         add(ctrlText);
         ctrlText.x = FlxG.width - ctrlText.width -5;
 
-        changeItem();
+        // -- Tweens and shit -- //
+
+        if (firstStart)
+        {
+            side.x -= 600;
+            selector.x -= 600;
+            creditPortrait.y += 800;
+            textbox.y += 500;
+            descText.y += 500;
+            ctrlText.alpha = 0;
+
+            FlxTween.tween(side, {x:0}, 0.5, {ease:FlxEase.quadInOut});
+            FlxTween.tween(selector, {x:55}, 0.5, {ease:FlxEase.quadInOut});
+            FlxTween.tween(creditPortrait, {y:0}, 0.6, {ease:FlxEase.expoInOut});
+            FlxTween.tween(textbox, {y:450}, 0.4, {ease:FlxEase.expoInOut});
+            FlxTween.tween(descText, {y:450+15}, 0.42, {ease:FlxEase.expoInOut, onComplete: function(twn:FlxTween){
+                FlxTween.tween(ctrlText, {alpha:1}, 0.4);
+                changeItem();
+                trans = true;
+            }});
+        }
+        else 
+        {
+            changeItem();
+            trans = true;
+        }
+
         super.create();
     }
 
     override function update(elapsed:Float) 
     {
-        if (controls.UI_UP_P)
-            changeItem(-1);
-        if (controls.UI_DOWN_P)
-            changeItem(1);
-        if (controls.BACK)
-            MusicBeatState.switchState(new MainMenuState());
-        if (controls.ACCEPT)
-            openLink();
-        if (FlxG.keys.justPressed.CONTROL)
+        if (trans)
         {
-            persistentUpdate = false;
-            openSubState(new SpecialThanksSubState());
-            FlxG.sound.play(Paths.sound('scrollMenu'));
+            if (controls.UI_UP_P)
+                changeItem(-1);
+            if (controls.UI_DOWN_P)
+                changeItem(1);
+            if (controls.BACK)
+                MusicBeatState.switchState(new MainMenuState());
+            if (controls.ACCEPT)
+                openLink();
+            if (FlxG.keys.justPressed.CONTROL)
+            {
+                persistentUpdate = false;
+                openSubState(new SpecialThanksSubState());
+                FlxG.sound.play(Paths.sound('scrollMenu'));
+            }
         }
-
         super.update(elapsed);    
     }
 
