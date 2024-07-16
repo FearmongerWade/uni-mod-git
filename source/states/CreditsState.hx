@@ -186,7 +186,7 @@ class CreditsState extends MusicBeatState
             case 0: // Bunny
                 CoolUtil.browserLoad('https://x.com/GhostBnuuy');
             case 1: // Cryfur
-                CoolUtil.browserLoad('');
+                CoolUtil.browserLoad('https://x.com/CryfurV');
             case 2: // Maia
                 CoolUtil.browserLoad('');
             case 3: // Eights
