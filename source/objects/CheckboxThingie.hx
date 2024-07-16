@@ -10,14 +10,13 @@ class CheckboxThingie extends FlxSprite
 	public function new(x:Float = 0, y:Float = 0, ?checked = false) {
 		super(x, y);
 
-		frames = Paths.getSparrowAtlas('checkboxanim');
-		animation.addByPrefix("unchecked", "checkbox0", 24, false);
-		animation.addByPrefix("unchecking", "checkbox anim reverse", 24, false);
-		animation.addByPrefix("checking", "checkbox anim0", 24, false);
-		animation.addByPrefix("checked", "checkbox finish", 24, false);
+		frames = Paths.getSparrowAtlas('menus/options/funnybox');
+		animation.addByPrefix("unchecked", "notselected", 24, false);
+		animation.addByPrefix("unchecking", "notselected", 24, false);
+		animation.addByPrefix("checking", "selected", 24, false);
+		animation.addByPrefix("checked", "selected", 24, false);
 
 		antialiasing = ClientPrefs.data.antialiasing;
-		setGraphicSize(Std.int(0.9 * width));
 		updateHitbox();
 
 		animationFinished(checked ? 'checking' : 'unchecking');
@@ -27,7 +26,7 @@ class CheckboxThingie extends FlxSprite
 
 	override function update(elapsed:Float) {
 		if (sprTracker != null) {
-			setPosition(sprTracker.x - 130 + offsetX, sprTracker.y + 30 + offsetY);
+			setPosition(sprTracker.x - 110 + offsetX, sprTracker.y + 30 + offsetY);
 			if(copyAlpha) {
 				alpha = sprTracker.alpha;
 			}
@@ -39,11 +38,11 @@ class CheckboxThingie extends FlxSprite
 		if(check) {
 			if(animation.curAnim.name != 'checked' && animation.curAnim.name != 'checking') {
 				animation.play('checking', true);
-				offset.set(34, 25);
+				//offset.set(34, 25);
 			}
 		} else if(animation.curAnim.name != 'unchecked' && animation.curAnim.name != 'unchecking') {
 			animation.play("unchecking", true);
-			offset.set(25, 28);
+			//offset.set(25, 28);
 		}
 		return check;
 	}
@@ -54,11 +53,11 @@ class CheckboxThingie extends FlxSprite
 		{
 			case 'checking':
 				animation.play('checked', true);
-				offset.set(3, 12);
+				//offset.set(3, 12);
 
 			case 'unchecking':
 				animation.play('unchecked', true);
-				offset.set(0, 2);
+				//offset.set(0, 2);
 		}
 	}
 }

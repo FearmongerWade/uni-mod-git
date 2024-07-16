@@ -9,7 +9,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 	var boyfriend:Character = null;
 	public function new()
 	{
-		title = 'Graphics';
+		title = 'video';
 		rpcTitle = 'Graphics Settings Menu'; //for Discord Rich Presence
 
 		boyfriend = new Character(840, 170, 'bf', true);

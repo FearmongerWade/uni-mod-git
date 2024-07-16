@@ -5,7 +5,7 @@ import backend.StageData;
 
 class OptionsState extends MusicBeatState
 {
-	var options:Array<String> = ['video', 'input', 'gameplay', 'audio', 'offset'];
+	var options:Array<String> = ['video', 'input', 'gameplay', 'audio'];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	var path:String = "menus/options/";
 
@@ -23,8 +23,6 @@ class OptionsState extends MusicBeatState
 				openSubState(new options.VisualsUISubState());*/
 			case 'gameplay':
 				openSubState(new options.GameplaySettingsSubState());
-			case 'offset':
-				MusicBeatState.switchState(new options.NoteOffsetState());
 		}
 	}
 
@@ -58,7 +56,6 @@ class OptionsState extends MusicBeatState
         funnySprite.animation.addByPrefix('audio', 'audio', 24);
         funnySprite.animation.addByPrefix('input', 'input', 24);
         funnySprite.animation.addByPrefix('gameplay', 'gameplay', 24);
-        funnySprite.animation.addByPrefix('offset', 'loading', 24);
 
         funnySprite.antialiasing = true;
         add(funnySprite);
@@ -68,7 +65,7 @@ class OptionsState extends MusicBeatState
 
 		for (i in 0...options.length)
 		{
-			var optionText:Alphabet = new Alphabet(100, 290+(i*75), options[i], true);
+			var optionText:Alphabet = new Alphabet(100, 300+(i*85), options[i], true);
 			grpOptions.add(optionText);
 		}
 
@@ -162,8 +159,6 @@ class OptionsState extends MusicBeatState
                 bottomText.text = 'Adjust gameplay settings (Downscroll, Ghost Tapping, etc.)';
             case "audio":
                 bottomText.text = 'Adjust your volume settings.';
-            case "offset":
-                bottomText.text = 'Adjust your offset settings.';
         }
 		
 	}
