@@ -488,8 +488,8 @@ class PlayState extends MusicBeatState
 		timeBar.screenCenter(X);
 		timeBar.alpha = 0;
 		timeBar.visible = showTime;
-		uiGroup.add(timeBar);
-		uiGroup.add(timeTxt);
+		//uiGroup.add(timeBar);
+		//uiGroup.add(timeTxt);
 
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		noteGroup.add(strumLineNotes);
@@ -701,8 +701,7 @@ class PlayState extends MusicBeatState
 	#end
 
 	public function reloadHealthBarColors() {
-		healthBar.setColors(FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]),
-			FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]));
+		healthBar.setColors(0xFFFF0000, 0xFF66FF33);
 	}
 
 	public function addCharacterToList(newCharacter:String, type:Int) {
@@ -2516,7 +2515,7 @@ class PlayState extends MusicBeatState
 		comboSpr.antialiasing = antialias;
 		comboSpr.y += 60;
 		comboSpr.velocity.x += FlxG.random.int(1, 10) * playbackRate;
-		comboGroup.add(rating);
+		//comboGroup.add(rating);
 
 		if (!PlayState.isPixelStage)
 		{
@@ -2564,8 +2563,8 @@ class PlayState extends MusicBeatState
 			numScore.antialiasing = antialias;
 
 			//if (combo >= 10 || combo == 0)
-			if(showComboNum)
-				comboGroup.add(numScore);
+			//if(showComboNum)
+			//	comboGroup.add(numScore);
 
 			FlxTween.tween(numScore, {alpha: 0}, 0.2 / playbackRate, {
 				onComplete: function(tween:FlxTween)
