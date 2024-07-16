@@ -2,15 +2,18 @@ package states;
 
 import flixel.FlxSubState;
 
-import flixel.effects.FlxFlicker;
 import lime.app.Application;
 import flixel.addons.transition.FlxTransitionableState;
+
+import flixel.addons.display.FlxBackdrop;
+import flixel.addons.display.FlxGridOverlay;
 
 class FlashingState extends MusicBeatState
 {
 	public static var leftState:Bool = false;
 
 	var warnText:FlxText;
+	var enter:FlxSprite;
 	override function create()
 	{
 		super.create();
@@ -18,43 +21,46 @@ class FlashingState extends MusicBeatState
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
 
-		warnText = new FlxText(0, 0, FlxG.width,
-			"Hey, watch out!\n
-			This Mod contains some flashing lights!\n
-			Press ENTER to disable them now or go to Options Menu.\n
-			Press ESCAPE to ignore this message.\n
-			You've been warned!",
-			32);
-		warnText.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
-		warnText.screenCenter(Y);
-		add(warnText);
-	}
+		var backdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true, 0x731B1722, 0x0));
+		backdrop.velocity.set(30, 30);
+		add(backdrop);
 
+		warnText = new FlxText(0, 0, FlxG.width,
+			"Warning\nThis mod contains some flashing lights\nAlso adjust your volume so your ears don't explode",
+			20);
+		warnText.setFormat(Paths.font('akira.otf'), 30, FlxColor.WHITE, CENTER);
+		warnText.antialiasing = true;
+		warnText.screenCenter();
+		add(warnText);
+
+		enter = new FlxSprite(1060, 500).loadGraphic(Paths.image('menus/enter'));
+		enter.antialiasing = true;
+		enter.scale.set(0.4, 0.4);
+		add(enter);
+	}
 	override function update(elapsed:Float)
 	{
 		if(!leftState) {
-			var back:Bool = controls.BACK;
-			if (controls.ACCEPT || back) {
+			if (controls.ACCEPT) {
 				leftState = true;
-				//FlxTransitionableState.skipNextTransIn = true;
-				//FlxTransitionableState.skipNextTransOut = true;
-				if(!back) {
-					ClientPrefs.data.flashing = false;
-					ClientPrefs.saveSettings();
-					FlxG.sound.play(Paths.sound('confirmMenu'));
-					FlxFlicker.flicker(warnText, 1, 0.1, false, true, function(flk:FlxFlicker) {
-						new FlxTimer().start(0.5, function (tmr:FlxTimer) {
-							MusicBeatState.switchState(new TitleState());
-						});
-					});
-				} else {
-					FlxG.sound.play(Paths.sound('cancelMenu'));
-					FlxTween.tween(warnText, {alpha: 0}, 1, {
-						onComplete: function (twn:FlxTween) {
-							MusicBeatState.switchState(new TitleState());
-						}
-					});
-				}
+				FlxTransitionableState.skipNextTransIn = true;
+				FlxTransitionableState.skipNextTransOut = true;
+
+				FlxG.camera.flash(0x85FFFFFF, 0.5);
+				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+				enter.scale.set(0.5, 0.5);
+				FlxTween.tween(enter.scale, {x:0.4, y:0.4}, 0.3, {ease:FlxEase.quadInOut,
+				onComplete: function (twn:FlxTween)
+				{
+					FlxTween.tween(enter, {y:700}, 0.7);
+				}});
+				FlxTween.tween(warnText, {y: 800}, 1.1, {
+					ease:FlxEase.quadInOut,
+					onComplete: function (twn:FlxTween) {
+						MusicBeatState.switchState(new TitleState());
+					},
+					startDelay: 0.2
+				});
 			}
 		}
 		super.update(elapsed);
