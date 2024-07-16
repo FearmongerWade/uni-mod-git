@@ -27,7 +27,7 @@ class CreditsState extends MusicBeatState
         "- Cryfur -\n\nCharter | GF VA\n\"Domain Expansion: Infinite Charting Editor\"",
         "- Maia -\n\nComposer\n\"quote goes here\"",
         "- Mr.Eights -\n\nComposer\n\"hi\"",
-        "- MCSteve - \n\nComposer\n\"quote goes here\""
+        "- MCSteve - \n\nComposer\n\"hi\""
     ];
 
     override function create() 
@@ -99,6 +99,8 @@ class CreditsState extends MusicBeatState
             changeItem(1);
         if (controls.BACK)
             MusicBeatState.switchState(new MainMenuState());
+        if (controls.ACCEPT)
+            openLink();
         if (FlxG.keys.justPressed.CONTROL)
         {
             persistentUpdate = false;
@@ -131,5 +133,22 @@ class CreditsState extends MusicBeatState
             if (spr.ID == curSelected)
                 FlxTween.tween(selector, {y: spr.y - 15}, 0.1, {ease:FlxEase.expoInOut});
         });
+    }
+
+    function openLink()
+    {
+        switch(curSelected)
+        {
+            case 0: // Bunny
+                CoolUtil.browserLoad('https://x.com/GhostBnuuy');
+            case 1: // Cryfur
+                CoolUtil.browserLoad('');
+            case 2: // Maia
+                CoolUtil.browserLoad('');
+            case 3: // Eights
+                CoolUtil.browserLoad('https://x.com/Mr3ights');
+            case 4: // Steve
+                CoolUtil.browserLoad('https://x.com/TiramisuuuCakey');
+        }
     }
 }
