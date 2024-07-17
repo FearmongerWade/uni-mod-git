@@ -8,79 +8,79 @@
 			],
 			"anim": "firstDeath",
 			"fps": 20,
-			"name": "bf snap",
+			"name": "gf snap",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				45,
-				-50
+				-33,
+				-10
 			],
 			"anim": "deathLoop",
 			"fps": 20,
-			"name": "bf idle",
+			"name": "gf idle",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				30,
-				9
+				36,
+				-13
 			],
 			"anim": "deathConfirm",
 			"fps": 20,
-			"name": "bf confirm",
+			"name": "gf confirm",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				60,
-				-50
+				4,
+				-21
 			],
 			"anim": "singLEFT",
 			"fps": 20,
-			"name": "bf left",
+			"name": "gf left",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				29,
-				-82
+				-31,
+				-80
 			],
 			"anim": "singDOWN",
 			"fps": 20,
-			"name": "bf down",
+			"name": "gf down",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				21,
-				12
+				-49,
+				-4
 			],
 			"anim": "singUP",
 			"fps": 20,
-			"name": "bf up",
+			"name": "gf up",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				-24,
-				-47
+				-66,
+				-18
 			],
 			"anim": "singRIGHT",
 			"fps": 20,
-			"name": "bf right",
+			"name": "gf right",
 			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "menus/game_over/bf/boyfriend",
+	"image": "menus/game_over/gf/girlfriend",
 	"position": [
 		0,
 		350
