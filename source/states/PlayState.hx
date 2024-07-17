@@ -1937,7 +1937,14 @@ class PlayState extends MusicBeatState
 				modchartTweens.clear();
 				#end
 
-				openSubState(new substates.gameover.GameOverBF());
+				switch (songName)
+				{
+					case 'uni':
+						openSubState(new substates.gameover.GameOverBF());
+					case 'paws':
+						openSubState(new substates.gameover.GameOverGF());
+				}
+				
 
 				// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
