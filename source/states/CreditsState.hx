@@ -16,7 +16,7 @@ class CreditsState extends MusicBeatState
         'Cryfur',
         'Maiandraw',
         'Eights',
-        'Steve'
+        'Misu'
     ];
     var side:FlxSprite;
     var selector:FlxSprite;
@@ -29,7 +29,7 @@ class CreditsState extends MusicBeatState
         "- Cryfur -\n\nCharter | GF VA\n\"Domain Expansion: Infinite Charting Editor\"",
         "- Maia -\n\nComposer\n\"dodo\"",
         "- Mr.Eights -\n\nComposer\n\"hi\"",
-        "- MCSteve - \n\nComposer\n\"hi\""
+        "- Misu - \n\nComposer\n\"hi\""
     ];
 
     override function create() 
