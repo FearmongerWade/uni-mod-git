@@ -21,12 +21,13 @@ class CreditsState extends MusicBeatState
     var side:FlxSprite;
     var selector:FlxSprite;
 
+    var dustyAssCryfurQuote:FlxSprite;
     var creditPortrait:FlxSprite;
     var textbox:FlxSprite;
     var descText:FlxTypeText;
     var descriptions:Array<String> = [
         "- Ghost Bunny -\n\nArtist | Coder | Composer\n\"friday night boobin\"",
-        "- Cryfur -\n\nCharter | GF VA\n\"Domain Expansion: Infinite Charting Editor\"",
+        "- Cryfur -\n\nCharter | GF VA\n\"         \"",
         "- Maia -\n\nComposer\n\"dodo\"",
         "- Mr.Eights -\n\nComposer\n\"hi\"",
         "- Misu - \n\nComposer\n\"hi\""
@@ -98,6 +99,10 @@ class CreditsState extends MusicBeatState
         descText.setFormat(Paths.font('phantommuff.ttf'), 32, FlxColor.WHITE, CENTER);
         add(descText);
 
+        dustyAssCryfurQuote = new FlxSprite(835, 570).loadGraphic(Paths.image(path+'brah'));
+        dustyAssCryfurQuote.visible = false;
+        add(dustyAssCryfurQuote);
+
         var ctrlText = new FlxText(0, FlxG.height-35, 0, "Press CTRL for the special thanks", 30);
         ctrlText.font = Paths.font('vcr.ttf');
         add(ctrlText);
@@ -165,6 +170,13 @@ class CreditsState extends MusicBeatState
 			curSelected = 0;
  		if (curSelected < 0)
 			curSelected = creditsNames.length - 1;
+
+        if (curSelected == 1)
+            new FlxTimer().start(1.5, function(tmr:FlxTimer){
+                dustyAssCryfurQuote.visible = true;
+            });
+        else 
+            dustyAssCryfurQuote.visible = false;
 
         creditPortrait.loadGraphic(Paths.image(path+'art/'+creditsNames[curSelected]));
         creditPortrait.updateHitbox();
