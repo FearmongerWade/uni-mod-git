@@ -1844,8 +1844,8 @@ class PlayState extends MusicBeatState
 		healthBar.percent = (newPercent != null ? newPercent : 0);
 
 		if (healthBar.percent < 20){
-			iconP2.animation.curAnim.curFrame = 1;
-			iconP1.animation.curAnim.curFrame = 2;
+			iconP1.animation.curAnim.curFrame = 1;
+			iconP2.animation.curAnim.curFrame = 2;
 		}
 		else if (healthBar.percent > 80){
 			iconP1.animation.curAnim.curFrame = 2;
