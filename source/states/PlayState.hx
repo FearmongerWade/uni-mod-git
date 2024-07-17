@@ -913,6 +913,7 @@ class PlayState extends MusicBeatState
 	var finishTimer:FlxTimer = null;
 
 	// For being able to mess with the sprites on Lua
+	public var countdownPrepare:FlxSprite;
 	public var countdownReady:FlxSprite;
 	public var countdownSet:FlxSprite;
 	public var countdownGo:FlxSprite;
@@ -986,7 +987,7 @@ class PlayState extends MusicBeatState
 				var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
 				var introImagesArray:Array<String> = switch(stageUI) {
 					case "pixel": ['${stageUI}UI/ready-pixel', '${stageUI}UI/set-pixel', '${stageUI}UI/date-pixel'];
-					case "normal": ["ready", "set" ,"go"];
+					case "normal": ["three", "two", "one" ,"go"];
 					default: ['${stageUI}UI/ready', '${stageUI}UI/set', '${stageUI}UI/go'];
 				}
 				introAssets.set(stageUI, introImagesArray);
@@ -999,17 +1000,18 @@ class PlayState extends MusicBeatState
 				{
 					case 0:
 						FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
+						countdownPrepare = createCountdownSprite(introAlts[0], antialias);
 						tick = THREE;
 					case 1:
-						countdownReady = createCountdownSprite(introAlts[0], antialias);
+						countdownReady = createCountdownSprite(introAlts[1], antialias);
 						FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
 						tick = TWO;
 					case 2:
-						countdownSet = createCountdownSprite(introAlts[1], antialias);
+						countdownSet = createCountdownSprite(introAlts[2], antialias);
 						FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
 						tick = ONE;
 					case 3:
-						countdownGo = createCountdownSprite(introAlts[2], antialias);
+						countdownGo = createCountdownSprite(introAlts[3], antialias);
 						FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
 						tick = GO;
 					case 4:
