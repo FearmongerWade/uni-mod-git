@@ -171,13 +171,16 @@ class CreditsState extends MusicBeatState
  		if (curSelected < 0)
 			curSelected = creditsNames.length - 1;
 
+        dustyAssCryfurQuote.visible = false;
         if (curSelected == 1)
-            new FlxTimer().start(1.5, function(tmr:FlxTimer){
+            descText.completeCallback = function(){
                 dustyAssCryfurQuote.visible = true;
-            });
+            }
         else 
-            dustyAssCryfurQuote.visible = false;
-
+            descText.completeCallback = function(){
+                trace('lol');
+            }
+            
         creditPortrait.loadGraphic(Paths.image(path+'art/'+creditsNames[curSelected]));
         creditPortrait.updateHitbox();
 
