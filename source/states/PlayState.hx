@@ -30,6 +30,7 @@ import states.StoryMenuState;
 import states.FreeplayState;
 import states.editors.ChartingState;
 import states.editors.CharacterEditorState;
+import states.ChartTroll;
 
 import substates.PauseSubState;
 import substates.GameOverSubstate;
@@ -1928,7 +1929,8 @@ class PlayState extends MusicBeatState
 		DiscordClient.resetClientID();
 		#end
 
-		MusicBeatState.switchState(new ChartingState());
+		//openSubState(new substates.ChartEditorSubstate());
+		MusicBeatState.switchState(new ChartTroll());
 	}
 
 	function openCharacterEditor()
@@ -1939,7 +1941,10 @@ class PlayState extends MusicBeatState
 		if(FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 		#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
-		MusicBeatState.switchState(new CharacterEditorState(SONG.player2));
+
+		MusicBeatState.switchState(new ChartTroll());
+
+		//MusicBeatState.switchState(new CharacterEditorState(SONG.player2));
 	}
 
 	public var isDead:Bool = false; //Don't mess with this on Lua!!!
