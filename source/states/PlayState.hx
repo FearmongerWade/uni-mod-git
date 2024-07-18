@@ -1,6 +1,7 @@
 package states;
 
 import backend.ClientPrefs;
+import backend.ClientPrefs;
 import backend.Highscore;
 import backend.StageData;
 import backend.WeekData;
@@ -179,6 +180,7 @@ class PlayState extends MusicBeatState
 	public var combo:Int = 0;
 
 	public var healthBar:Bar;
+	public var fakeHealthBar:FlxSprite;
 	public var timeBar:Bar;
 	var songPercent:Float = 0;
 
@@ -539,6 +541,14 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 		uiGroup.add(healthBar);
 
+		fakeHealthBar = new FlxSprite().loadGraphic(Paths.image('backgrounds/rooftop/hpBar'));
+		fakeHealthBar.screenCenter(X);
+		fakeHealthBar.y = ClientPrefs.data.downScroll ? 20 : 590;
+		fakeHealthBar.antialiasing = true;
+		uiGroup.add(fakeHealthBar);
+		fakeHealthBar.alpha = 0.000001;
+		//fakeHealthBar.flipY = !ClientPrefs.data.downScroll;
+
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - 75;
 		iconP1.visible = !ClientPrefs.data.hideHud;
@@ -570,6 +580,16 @@ class PlayState extends MusicBeatState
 		uiGroup.cameras = [camHUD];
 		noteGroup.cameras = [camHUD];
 		comboGroup.cameras = [camHUD];
+
+		if (songName == 'paws')
+		{
+			fakeHealthBar.alpha = 1;
+			healthBar.y = FlxG.height * (!ClientPrefs.data.downScroll ? 0.844 : 0.054);
+			scoreTxt.font = Paths.font('vcr.ttf');
+			scoreTxt.size = 16;
+			if (ClientPrefs.data.downScroll)
+				scoreTxt.y = fakeHealthBar.y+100;
+		}
 
 		startingSong = true;
 
@@ -1129,9 +1149,14 @@ class PlayState extends MusicBeatState
 		var tempScore:String = 'Score: ${songScore}'
 		+ (!instakillOnMiss ? ' • Combo Breaks: ${songMisses}' : "")
 		+ ' • Accuracy: ${str}';
+
+		var pawsScore:String = 'Score: ${songScore}';
 		// "tempScore" variable is used to prevent another memory leak, just in case
 		// "\n" here prevents the text from being cut off by beat zooms
-		scoreTxt.text = '${tempScore}\n';
+		if (songName == 'paws')
+			scoreTxt.text = '${pawsScore}\n';
+		else
+			scoreTxt.text = '${tempScore}\n';
 
 		if (!miss && !cpuControlled)
 			doScoreBop();

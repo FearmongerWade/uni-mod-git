@@ -13,8 +13,7 @@ Song code:
 - events for uni song                           [0%]
 - events for nightmare                          [0%]
 - events for paws                               [0%]
-- ui for paws                                   [80%]
-- discord rpc                                   [0%]
+- ui for paws                                   [done]
 
 Game overs:
 - make them functional                          [80%]
@@ -23,7 +22,8 @@ Game overs:
 - jumpscare game over                           [0%]
 
 Options:
-- make every option functional
-- remove useless options
+- make every option functional                  [done]
+- remove useless options                        [done]
 - volume settings
 - final organization and fixes
+- discord rpc                                   [0%]

@@ -21,7 +21,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Ghost Tapping',
-			"If checked, you won't get misses from pressing keys while there are no notes able to be hit.",
+			"You won't get misses from pressing keys while there are no notes.",
 			'ghostTapping',
 			'bool');
 		addOption(option);
@@ -32,8 +32,8 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'bool');
 		addOption(option);
 
-		var option:Option = new Option('Sustains as One Note',
-			"If checked, Hold Notes can't be pressed if you miss,\nand count as a single Hit/Miss.\nUncheck this if you prefer the old Input System.",
+		var option:Option = new Option('New Input System',
+			"If checked, Hold Notes can't be pressed if you miss, and count as a single Hit/Miss.",
 			'guitarHeroSustains',
 			'bool');
 		addOption(option);

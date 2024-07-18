@@ -64,7 +64,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
         titleSprite.screenCenter(X);
         add(titleSprite);
 
-		descText = new FlxText(10, FlxG.height - 32, 1100, "", 24);
+		descText = new FlxText(10, FlxG.height - 32, 1280, "", 24);
 		descText.setFormat(Paths.font("vcr.ttf"), 24);
 		add(descText);
 
