@@ -9,9 +9,9 @@ Menus:
 - code in the new options menu                  [done]
 
 Song code:
-- countdown sprites and code                    [90%]
-- events for uni song                           [0%]
-- events for nightmare                          [0%]
+- countdown sprites and code                    [done]
+- events for uni song                           [done]
+- events for nightmare                          [done]
 - events for paws                               [0%]
 - ui for paws                                   [done]
 
@@ -24,6 +24,7 @@ Game overs:
 Options:
 - make every option functional                  [done]
 - remove useless options                        [done]
-- volume settings
-- final organization and fixes
+- volume settings                               [20%]
 - discord rpc                                   [0%]
+- new app icon                                  [0%]
+- final organization and fixes                  [0%]

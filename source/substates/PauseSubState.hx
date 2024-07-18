@@ -174,6 +174,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode = false;
 					FlxG.camera.followLerp = 0;
+					FlxG.mouse.visible = false;
 			}
 		}
 	}
