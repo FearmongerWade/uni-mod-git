@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="jumpscare.png">
+	<!-- Created with Adobe Animate version 22.0.5.191 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="jumpscareanim0000" x="5" y="5" width="402" height="269" frameX="-276" frameY="-277" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0001" x="412" y="5" width="440" height="344" frameX="-276" frameY="-232" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0002" x="857" y="5" width="444" height="306" frameX="-259" frameY="-247" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0003" x="1306" y="5" width="493" height="362" frameX="-221" frameY="-211" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0004" x="5" y="372" width="515" height="363" frameX="-218" frameY="-199" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0005" x="525" y="372" width="666" height="468" frameX="-142" frameY="-119" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0006" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0007" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0008" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0009" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0010" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0011" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0012" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0013" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0014" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0015" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0016" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0017" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0018" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0019" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0020" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0021" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0022" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0023" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0024" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0025" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0026" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0027" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0028" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0029" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0030" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0031" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0032" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0033" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0034" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0035" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0036" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0037" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0038" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0039" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0040" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0041" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0042" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0043" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0044" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0045" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0046" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0047" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0048" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0049" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0050" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0051" x="5" y="845" width="945" height="670" frameX="-5" frameY="-4" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0052" x="955" y="845" width="956" height="677"/>
+	<SubTexture name="jumpscareanim0053" x="1916" y="845" width="0" height="0" frameX="-276" frameY="-277" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0054" x="1916" y="845" width="0" height="0" frameX="-276" frameY="-277" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0055" x="1916" y="845" width="0" height="0" frameX="-276" frameY="-277" frameWidth="956" frameHeight="677"/>
+	<SubTexture name="jumpscareanim0056" x="1916" y="845" width="0" height="0" frameX="-276" frameY="-277" frameWidth="956" frameHeight="677"/>
+</TextureAtlas>

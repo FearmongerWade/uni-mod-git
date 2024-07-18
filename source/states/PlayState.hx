@@ -1976,6 +1976,8 @@ class PlayState extends MusicBeatState
 				{
 					case 'uni':
 						openSubState(new substates.gameover.GameOverBF());
+					case 'nightmare':
+						openSubState(new substates.gameover.Jumpscare());
 					case 'paws':
 						openSubState(new substates.gameover.GameOverGF());
 				}

@@ -19,13 +19,13 @@ Game overs:
 - make them functional                          [80%]
 - add the songs                                 [done]
 - chart both game overs                         [done]
-- jumpscare game over                           [0%]
+- jumpscare game over                           [done]
 
 Options:
 - make every option functional                  [done]
 - remove useless options                        [done]
 - volume settings                               [20%]
 - jumpscare for chart editor                    [done]
-- discord rpc                                   [70%]
+- discord rpc                                   [done]
 - new app icon                                  [done]
 - final organization and fixes                  [0%]
