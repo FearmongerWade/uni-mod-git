@@ -1,5 +1,6 @@
 package states;
 
+import backend.ClientPrefs;
 import backend.Highscore;
 import backend.StageData;
 import backend.WeekData;
@@ -620,6 +621,7 @@ class PlayState extends MusicBeatState
 		//PRECACHING THINGS THAT GET USED FREQUENTLY TO AVOID LAGSPIKES
 		if(ClientPrefs.data.hitsoundVolume > 0) Paths.sound('hitsound');
 		for (i in 1...4) Paths.sound('missnote$i');
+		for (i in 1...9) Paths.sound('gfMiss/$i');
 		Paths.image('alphabet');
 
 		if (PauseSubState.songName != null)
@@ -2802,7 +2804,6 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.data.ghostTapping) return; //fuck it
 
 		noteMissCommon(direction);
-		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 		callOnScripts('noteMissPress', [direction]);
 	}
 
@@ -2884,6 +2885,15 @@ class PlayState extends MusicBeatState
 				gf.specialAnim = true;
 			}
 		}
+
+		if (ClientPrefs.data.missSounds)
+		{
+			if (songName == 'paws')
+				FlxG.sound.play(Paths.soundRandom('gfMiss/', 1, 9), FlxG.random.float(0.8, 1.0));
+			else 
+				FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+		}
+		
 		vocals.volume = 0;
 	}
 

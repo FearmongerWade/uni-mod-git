@@ -45,7 +45,7 @@ import states.InitState;
 	public var scoreZoom:Bool = true;
 	public var noReset:Bool = false;
 	public var healthBarAlpha:Float = 1;
-	public var hitsoundVolume:Float = 0;
+	
 	public var pauseMusic:String = 'Tea Time';
 	public var checkForUpdates:Bool = true;
 	public var comboStacking:Bool = true;
@@ -79,6 +79,11 @@ import states.InitState;
 	public var safeFrames:Float = 10;
 	public var guitarHeroSustains:Bool = true;
 	public var discordRPC:Bool = true;
+
+	// -- AUDIO SAVE VARIABLES -- //
+
+	public var hitsoundVolume:Float = 0;
+	public var missSounds:Bool = true;
 }
 
 class ClientPrefs {

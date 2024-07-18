@@ -23,6 +23,8 @@ class OptionsState extends MusicBeatState
 				openSubState(new options.VisualsUISubState());*/
 			case 'gameplay':
 				openSubState(new options.GameplaySettingsSubState());
+			case 'audio':
+				openSubState(new options.AudioSettings());
 		}
 	}
 

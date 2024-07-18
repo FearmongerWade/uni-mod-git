@@ -6,7 +6,7 @@ Menus:
 - code a new warning screen                     [done]
 - code in the new credits menu                  [done]
 - make assets for the options menu              [done]
-- code in the new options menu                  [90%]
+- code in the new options menu                  [done]
 
 Song code:
 - countdown sprites and code                    [90%]
@@ -14,6 +14,7 @@ Song code:
 - events for nightmare                          [0%]
 - events for paws                               [0%]
 - ui for paws                                   [80%]
+- discord rpc                                   [0%]
 
 Game overs:
 - make them functional                          [80%]

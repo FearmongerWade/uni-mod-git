@@ -19,7 +19,6 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	private var grpOptions:FlxTypedGroup<FlxText>;
 	private var checkboxGroup:FlxTypedGroup<CheckboxThingie>;
 	private var grpTexts:FlxTypedGroup<AttachedText>;
-	var alphabetShader:FlxRuntimeShader;
 
 	private var descBox:FlxSprite;
 	private var descText:FlxText;
@@ -68,8 +67,6 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		descText = new FlxText(10, FlxG.height - 32, 1100, "", 24);
 		descText.setFormat(Paths.font("vcr.ttf"), 24);
 		add(descText);
-
-		alphabetShader = new FlxRuntimeShader(File.getContent('assets/shared/shaders/white.frag'));
 
 		for (i in 0...optionsArray.length)
 		{
