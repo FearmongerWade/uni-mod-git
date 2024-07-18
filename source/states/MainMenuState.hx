@@ -167,7 +167,7 @@ class MainMenuState extends MusicBeatState
 	{
 		selectedSomethin = true;
 		FlxG.sound.play(Paths.sound('confirmMenu'));
-		FlxG.camera.flash(FlxColor.WHITE, 1);
+		if (ClientPrefs.data.flashing) FlxG.camera.flash(FlxColor.WHITE, 1);
 
 		new FlxTimer().start(1.5, function(tmr) {
 			switch(optionShit[curSelected])
