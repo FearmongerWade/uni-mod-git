@@ -1,67 +1,67 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				10,
 				-32
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 18,
-			"name": "Uni Left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Uni Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				-33
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 18,
-			"name": "Uni Right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Uni Right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-10,
 				56
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 18,
-			"name": "Uni Up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "Uni Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 18,
-			"name": "Uni Idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Uni Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				90,
 				0
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 18,
-			"name": "Uni Down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Uni Down"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/paws/unicute",
 	"position": [
-		70,
-		400
+		110,
+		420
 	],
 	"healthicon": "face",
 	"flip_x": false,
@@ -72,7 +72,7 @@
 	],
 	"camera_position": [
 		-20,
-		-40
+		-60
 	],
 	"sing_duration": 4,
 	"scale": 1,

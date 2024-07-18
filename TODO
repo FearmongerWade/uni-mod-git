@@ -12,7 +12,7 @@ Song code:
 - countdown sprites and code                    [done]
 - events for uni song                           [done]
 - events for nightmare                          [done]
-- events for paws                               [0%]
+- events for paws                               [done]
 - ui for paws                                   [done]
 
 Game overs:
@@ -25,6 +25,7 @@ Options:
 - make every option functional                  [done]
 - remove useless options                        [done]
 - volume settings                               [20%]
+- jumpscare for chart editor                    [0%]
 - discord rpc                                   [0%]
 - new app icon                                  [0%]
 - final organization and fixes                  [0%]

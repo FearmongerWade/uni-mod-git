@@ -5,6 +5,7 @@ function onCreatePost()
     -- ASSETS --
 
     makeLuaSprite('bg1', path..'sky', 0,200)
+    setScrollFactor('bg1', 0.7, 1.0)
     addLuaSprite('bg1', false)
 
     makeLuaSprite('bg2', path..'bg', 0,200)

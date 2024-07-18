@@ -1,14 +1,13 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "danceLeft",
+			"loop": false,
 			"fps": 18,
-			"name": "GF Idle",
+			"anim": "danceLeft",
 			"indices": [
 				0,
 				1,
@@ -24,17 +23,17 @@
 				11,
 				12,
 				13
-			]
+			],
+			"name": "GF Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "danceRight",
+			"loop": false,
 			"fps": 18,
-			"name": "GF Idle",
+			"anim": "danceRight",
 			"indices": [
 				14,
 				15,
@@ -50,102 +49,103 @@
 				25,
 				26,
 				27
-			]
+			],
+			"name": "GF Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				118,
 				-10
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 18,
-			"name": "GF Left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "GF Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-4,
 				6
 			],
-			"anim": "singUPmiss",
+			"loop": false,
 			"fps": 18,
-			"name": "MISS GF Up",
-			"indices": []
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "MISS GF Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				120,
 				-16
 			],
-			"anim": "singLEFTmiss",
+			"loop": false,
 			"fps": 18,
-			"name": "MISS GF Left",
-			"indices": []
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "MISS GF Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				20,
 				-50
 			],
-			"anim": "singDOWNmiss",
+			"loop": false,
 			"fps": 18,
-			"name": "MISS GF Down",
-			"indices": []
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "MISS GF Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				10,
 				22
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 18,
-			"name": "GF Up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "GF Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-21,
 				-31
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 18,
-			"name": "GF Down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "GF Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-41,
 				-9
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 18,
-			"name": "GF Right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "GF Right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-56,
 				-13
 			],
-			"anim": "singRIGHTmiss",
+			"loop": false,
 			"fps": 18,
-			"name": "MISS GF Right",
-			"indices": []
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "MISS GF Right"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/paws/gfcute",
 	"position": [
-		60,
+		20,
 		290
 	],
 	"healthicon": "bf",
@@ -156,7 +156,7 @@
 		209
 	],
 	"camera_position": [
-		100,
+		70,
 		30
 	],
 	"sing_duration": 4,
