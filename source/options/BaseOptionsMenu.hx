@@ -7,7 +7,6 @@ import flixel.input.gamepad.FlxGamepadManager;
 
 import objects.CheckboxThingie;
 import objects.AttachedText;
-import objects.AttachedFlxText;
 import options.Option;
 import backend.InputFormatter;
 
@@ -19,7 +18,8 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 	private var grpOptions:FlxTypedGroup<FlxText>;
 	private var checkboxGroup:FlxTypedGroup<CheckboxThingie>;
-	private var grpTexts:FlxTypedGroup<AttachedFlxText>;
+	private var grpTexts:FlxTypedGroup<AttachedText>;
+	var alphabetShader:FlxRuntimeShader;
 
 	private var descBox:FlxSprite;
 	private var descText:FlxText;
@@ -50,7 +50,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		grpOptions = new FlxTypedGroup<FlxText>();
 		add(grpOptions);
 
-		grpTexts = new FlxTypedGroup<AttachedFlxText>();
+		grpTexts = new FlxTypedGroup<AttachedText>();
 		add(grpTexts);
 
 		checkboxGroup = new FlxTypedGroup<CheckboxThingie>();
@@ -68,6 +68,8 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		descText = new FlxText(10, FlxG.height - 32, 1100, "", 24);
 		descText.setFormat(Paths.font("vcr.ttf"), 24);
 		add(descText);
+
+		alphabetShader = new FlxRuntimeShader(File.getContent('assets/shared/shaders/white.frag'));
 
 		for (i in 0...optionsArray.length)
 		{
@@ -88,12 +90,12 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				optionText.x -= 80;
 				//optionText.startPosition.x -= 80;
 				//optionText.xAdd -= 80;
-				var valueText = new AttachedFlxText('' + optionsArray[i].getValue(), optionText.width + 60);
+				var valueText = new AttachedText('' + optionsArray[i].getValue(), optionText.width + 30, -30, false, 0.6);
 				valueText.sprTracker = optionText;
 				valueText.copyAlpha = true;
 				valueText.ID = i;
 				grpTexts.add(valueText);
-				//optionsArray[i].child = valueText;
+				optionsArray[i].child = valueText;
 			}
 			//optionText.snapToPosition(); //Don't ignore me when i ask for not making a fucking pull request to uncomment this line ok
 			updateTextFrom(optionsArray[i]);
@@ -402,23 +404,23 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				text = InputFormatter.getGamepadName(FlxGamepadInputID.fromString(text));
 		}
 
-		var bind:AttachedFlxText = cast option.child;
-		var attach = new AttachedFlxText(text, bind.offsetX);
-		/*attach.sprTracker = bind.sprTracker;
-		attach.copyAlpha = true;*/
+		var bind:AttachedText = cast option.child;
+		var attach = new AttachedText(text, bind.offsetX);
+		attach.sprTracker = bind.sprTracker;
+		attach.copyAlpha = true;
 		attach.ID = bind.ID;
-		//playstationCheck(attach);
+		playstationCheck(attach);
 		attach.scale.x = Math.min(1, MAX_KEYBIND_WIDTH / attach.width);
 		attach.x = bind.x;
 		attach.y = bind.y;
 
-		//option.child = attach;
+		option.child = attach;
 		grpTexts.insert(grpTexts.members.indexOf(bind), attach);
 		grpTexts.remove(bind);
 		bind.destroy();
 	}
 
-	/*function playstationCheck(alpha:Alphabet)
+	function playstationCheck(alpha:Alphabet)
 	{
 		if(!controls.controllerMode) return;
 
@@ -437,7 +439,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 					letter.offset.y -= 5;
 			}
 		}
-	}*/
+	}
 
 	function closeBinding()
 	{
