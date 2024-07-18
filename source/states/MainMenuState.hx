@@ -24,6 +24,8 @@ class MainMenuState extends MusicBeatState
     var itemTween:FlxTween;
     var itemAlphaTween:FlxTween;
 
+	var logo:FlxSprite;
+
 	override function create()
 	{
 		// -- Setup -- //
@@ -42,6 +44,7 @@ class MainMenuState extends MusicBeatState
 		transOut = FlxTransitionableState.defaultTransOut;
 
 		persistentUpdate = persistentDraw = true;
+		Conductor.bpm = 160;
 
 		// -- Assets -- //
 
@@ -54,19 +57,26 @@ class MainMenuState extends MusicBeatState
 		menuItem.antialiasing = ClientPrefs.data.antialiasing;
 		add(menuItem);
 
-		var vinyl = new FlxSprite(622, 423);
+		var vinyl = new FlxSprite(622, 453);
 		vinyl.frames = Paths.getSparrowAtlas(path + 'vinyl');
 		vinyl.animation.addByPrefix('yeah', 'vinyl play', 18, true);
 		vinyl.animation.play('yeah');
 		vinyl.antialiasing = ClientPrefs.data.antialiasing;
 		add(vinyl);
 
-		var uni = new FlxSprite(750, 225);
+		var uni = new FlxSprite(745, 250);
 		uni.frames = Paths.getSparrowAtlas(path + 'the strongest');
 		uni.animation.addByPrefix('guh', 'spin', 18, true);
 		uni.animation.play('guh');
 		uni.antialiasing = ClientPrefs.data.antialiasing;
 		add(uni);
+
+		logo = new FlxSprite(610, 100);
+		logo.frames = Paths.getSparrowAtlas(path + 'dollar store logo');
+		logo.animation.addByPrefix('gwaa', 'budget logo', 24, true);
+		logo.scale.set(1.1, 1.1);
+		logo.antialiasing = true;
+		add(logo);
 
 		var upArrow = new FlxSprite(300, 50).loadGraphic(Paths.image(path + 'arrow'));
 		upArrow.antialiasing = ClientPrefs.data.antialiasing;
@@ -89,6 +99,9 @@ class MainMenuState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		if (FlxG.sound.music != null)
+			Conductor.songPosition = FlxG.sound.music.time;
+
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * elapsed;
@@ -112,9 +125,24 @@ class MainMenuState extends MusicBeatState
 				MusicBeatState.switchState(new MasterEditorMenu());
 			}
 			#end
+
+			if (FlxG.keys.justPressed.CONTROL)
+			{
+				persistentUpdate = false;
+				openSubState(new substates.GameplayChangersSubstate());
+			}
+				
 		}
 
 		super.update(elapsed);
+	}
+
+	override function beatHit()
+	{
+		if (logo != null && curBeat % 2 == 0)
+			logo.animation.play('gwaa');
+		
+		super.beatHit();
 	}
 
 	function changeItem(huh:Int = 0)
