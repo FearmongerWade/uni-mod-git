@@ -1981,6 +1981,7 @@ class PlayState extends MusicBeatState
 					case 'nightmare':
 						openSubState(new substates.gameover.Jumpscare());
 					case 'paws':
+						camGame.alpha = 1;
 						openSubState(new substates.gameover.GameOverGF());
 				}
 				
