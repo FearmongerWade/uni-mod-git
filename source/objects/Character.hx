@@ -132,6 +132,10 @@ class Character extends FlxSprite
 				skipDance = true;
 				loadMappedAnims();
 				playAnim("shoot1");
+			case 'bf-dead':
+				loadDeadAnims();
+			case 'gf-dead':
+				loadDeadAnimsGF();
 		}
 	}
 
@@ -276,6 +280,17 @@ class Character extends FlxSprite
 					animationNotes.shift();
 				}
 				if(isAnimationFinished()) playAnim(getAnimationName(), false, false, animation.curAnim.frames.length - 3);
+
+			case 'bf-dead' | 'gf-dead':
+    			if(animationNotes.length > 0 && Conductor.songPosition > animationNotes[0][0]) 
+				{
+					var noteData = animationNotes[0][1];
+    			    playAnim(PlayState.instance.singAnimations[noteData], true);
+
+					holdTimer = 0;
+
+    			    animationNotes.shift();
+    			}
 		}
 
 		if (getAnimationName().startsWith('sing')) holdTimer += elapsed;
@@ -403,6 +418,35 @@ class Character extends FlxSprite
 		}
 		catch(e:Dynamic) {}
 	}
+
+	function loadDeadAnims():Void
+	{
+		try
+		{
+			var noteData:Array<SwagSection> = Song.loadFromJson('too-bad-bf', Paths.formatToSongPath('gameover')).notes;
+			for (section in noteData) {
+				for (songNotes in section.sectionNotes) {
+					animationNotes.push(songNotes);
+				}
+			}
+			animationNotes.sort(sortAnims);
+		}
+		catch(e:Dynamic) {}
+	}
+	function loadDeadAnimsGF():Void
+		{
+			try
+			{
+				var noteData:Array<SwagSection> = Song.loadFromJson('too-bad-gf', Paths.formatToSongPath('gameover')).notes;
+				for (section in noteData) {
+					for (songNotes in section.sectionNotes) {
+						animationNotes.push(songNotes);
+					}
+				}
+				animationNotes.sort(sortAnims);
+			}
+			catch(e:Dynamic) {}
+		}
 
 	function sortAnims(Obj1:Array<Dynamic>, Obj2:Array<Dynamic>):Int
 	{

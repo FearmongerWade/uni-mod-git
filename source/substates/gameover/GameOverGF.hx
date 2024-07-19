@@ -140,7 +140,7 @@ class GameOverGF extends MusicBeatSubstate
 	function coolStartDeath(?volume:Float = 1):Void
 	{
 		FlxG.sound.playMusic(Paths.music('toobadGF'), ClientPrefs.data.musicVolume, false);
-        new FlxTimer().start(122.2, function(tmr:FlxTimer){
+        new FlxTimer().start(121, function(tmr:FlxTimer){
             endBullshit();
         });
         //FlxG.sound.music.onComplete = endBullshit;
