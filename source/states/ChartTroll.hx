@@ -5,7 +5,7 @@ class ChartTroll extends MusicBeatState
     override function create() 
     {
         FlxG.camera.zoom = 1;
-        FlxG.sound.playMusic(Paths.music('you shouldnt of done that'));
+        FlxG.sound.playMusic(Paths.music('you shouldnt of done that'), ClientPrefs.data.musicVolume);
 
         var img = new FlxSprite().loadGraphic(Paths.image('consequences'));
         img.scrollFactor.set();

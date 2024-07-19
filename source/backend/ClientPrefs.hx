@@ -82,6 +82,10 @@ import states.InitState;
 
 	// -- AUDIO SAVE VARIABLES -- //
 
+	public var musicVolume:Float = 1;
+	public var soundVolume:Float = 1;
+	public var instVolume:Float = 1;
+	public var voicesVolume:Float = 1;
 	public var hitsoundVolume:Float = 0;
 	public var missSounds:Bool = true;
 }

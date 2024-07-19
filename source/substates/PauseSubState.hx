@@ -135,7 +135,7 @@ class PauseSubState extends MusicBeatSubstate
 	override function update(elapsed:Float)
 	{
 		cantUnpause -= elapsed;
-		if (pauseMusic.volume < 0.5)
+		if (pauseMusic.volume < ClientPrefs.data.musicVolume *0.5)
 			pauseMusic.volume += 0.05 * elapsed;
 
 		super.update(elapsed);
@@ -170,7 +170,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.seenCutscene = false;
 					MusicBeatState.switchState(new MainMenuState());
 
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					FlxG.sound.playMusic(Paths.music('freakyMenu'), ClientPrefs.data.musicVolume);
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode = false;
 					FlxG.camera.followLerp = 0;
@@ -204,7 +204,7 @@ class PauseSubState extends MusicBeatSubstate
 	{
 		curSelected += change;
 
-		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
+		FlxG.sound.play(Paths.sound('scrollMenu'), ClientPrefs.data.soundVolume * 0.4);
 
 		if (curSelected < 0)
 			curSelected = menuItems.length - 1;

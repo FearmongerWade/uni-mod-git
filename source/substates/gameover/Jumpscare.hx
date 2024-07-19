@@ -121,7 +121,7 @@ class Jumpscare extends MusicBeatSubstate
 
                 MusicBeatState.switchState(new states.MainMenuState());
 
-                FlxG.sound.playMusic(Paths.music('freakyMenu'));
+                FlxG.sound.playMusic(Paths.music('freakyMenu'), ClientPrefs.data.musicVolume);
             }
         }    
     }

@@ -37,7 +37,7 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		FlxG.sound.playMusic(Paths.music('options'));
+		FlxG.sound.playMusic(Paths.music('options'), ClientPrefs.data.musicVolume);
 
 		var bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
@@ -109,7 +109,7 @@ class OptionsState extends MusicBeatState
 		}
 
 		if (controls.BACK) {
-			FlxG.sound.play(Paths.sound('cancelMenu'));
+			FlxG.sound.play(Paths.sound('cancelMenu'), ClientPrefs.data.soundVolume);
 			if(onPlayState)
 			{
 				StageData.loadDirectory(PlayState.SONG);
@@ -118,7 +118,7 @@ class OptionsState extends MusicBeatState
 			}
 			else 
 			{
-				FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.8);
+				FlxG.sound.playMusic(Paths.music('freakyMenu'), ClientPrefs.data.musicVolume* 0.8);
 				MusicBeatState.switchState(new MainMenuState());
 			}
 		}
@@ -127,7 +127,7 @@ class OptionsState extends MusicBeatState
 	
 	function changeSelection(change:Int = 0) 
 	{
-		FlxG.sound.play(Paths.sound('scrollMenu'));
+		FlxG.sound.play(Paths.sound('scrollMenu'), ClientPrefs.data.soundVolume);
 
 		curSelected += change;
 

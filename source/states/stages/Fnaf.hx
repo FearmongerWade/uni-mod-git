@@ -21,6 +21,6 @@ class Fnaf extends BaseStage
     override function update(elapsed:Float) 
     {
         if (FlxG.mouse.overlaps(clickable) && FlxG.mouse.justPressed)
-            FlxG.sound.play(Paths.sound('boop'));
+            FlxG.sound.play(Paths.sound('boop'), ClientPrefs.data.soundVolume);
     }
 }

@@ -98,13 +98,13 @@ class TitleState extends MusicBeatState
 
         if (controls.ACCEPT && !transitioning)
 		{
-            FlxG.sound.play(Paths.sound('confirmMenu'));
+            FlxG.sound.play(Paths.sound('confirmMenu'), ClientPrefs.data.soundVolume);
             if (ClientPrefs.data.flashing) FlxG.camera.flash(FlxColor.WHITE, 1);
 			transitioning = true;
 
             new FlxTimer().start(2, function(tmr:FlxTimer){
                 MusicBeatState.switchState(new MainMenuState());
-                FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.8);
+                FlxG.sound.playMusic(Paths.music('freakyMenu'), ClientPrefs.data.musicVolume * 0.8);
             });
         }
 		super.update(elapsed);

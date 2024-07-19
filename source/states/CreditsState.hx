@@ -154,7 +154,7 @@ class CreditsState extends MusicBeatState
             {
                 persistentUpdate = false;
                 openSubState(new SpecialThanksSubState());
-                FlxG.sound.play(Paths.sound('scrollMenu'));
+                FlxG.sound.play(Paths.sound('scrollMenu'), ClientPrefs.data.soundVolume);
             }
         }
         super.update(elapsed);    
@@ -162,7 +162,7 @@ class CreditsState extends MusicBeatState
 
     function changeItem(bwa:Int = 0) 
     {
-        FlxG.sound.play(Paths.sound('scrollMenu'));
+        FlxG.sound.play(Paths.sound('scrollMenu'), ClientPrefs.data.soundVolume);
 
         curSelected += bwa;
 

@@ -1,5 +1,6 @@
 package options;
 
+import backend.ClientPrefs;
 import flixel.input.keyboard.FlxKey;
 import flixel.input.gamepad.FlxGamepad;
 import flixel.input.gamepad.FlxGamepadInputID;
@@ -138,7 +139,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		if (controls.BACK) {
 			close();
-			FlxG.sound.play(Paths.sound('cancelMenu'));
+			FlxG.sound.play(Paths.sound('cancelMenu'), ClientPrefs.data.soundVolume);
 		}
 
 		if(nextAccept <= 0)
@@ -147,7 +148,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 			{
 				if(controls.ACCEPT)
 				{
-					FlxG.sound.play(Paths.sound('scrollMenu'));
+					FlxG.sound.play(Paths.sound('scrollMenu'), ClientPrefs.data.soundVolume);
 					curOption.setValue((curOption.getValue() == true) ? false : true);
 					curOption.change();
 					reloadCheckboxes();
@@ -177,7 +178,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 						bindingKey = true;
 						holdingEsc = 0;
 						ClientPrefs.toggleVolumeKeys(false);
-						FlxG.sound.play(Paths.sound('scrollMenu'));
+						FlxG.sound.play(Paths.sound('scrollMenu'), ClientPrefs.data.soundVolume);
 					}
 				}
 				else if(controls.UI_LEFT || controls.UI_RIGHT)
@@ -225,7 +226,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 							}
 							updateTextFrom(curOption);
 							curOption.change();
-							FlxG.sound.play(Paths.sound('scrollMenu'));
+							FlxG.sound.play(Paths.sound('scrollMenu'), ClientPrefs.data.soundVolume);
 						}
 						else if(curOption.type != 'string')
 						{
@@ -251,7 +252,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				}
 				else if(controls.UI_LEFT_R || controls.UI_RIGHT_R)
 				{
-					if(holdTime > 0.5) FlxG.sound.play(Paths.sound('scrollMenu'));
+					if(holdTime > 0.5) FlxG.sound.play(Paths.sound('scrollMenu'), ClientPrefs.data.soundVolume);
 					holdTime = 0;
 				}
 			}
@@ -274,7 +275,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 					updateBind(leOption);
 				}
 				leOption.change();
-				FlxG.sound.play(Paths.sound('cancelMenu'));
+				FlxG.sound.play(Paths.sound('cancelMenu'), ClientPrefs.data.soundVolume);
 				reloadCheckboxes();
 			}
 		}
@@ -291,7 +292,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 			holdingEsc += elapsed;
 			if(holdingEsc > 0.5)
 			{
-				FlxG.sound.play(Paths.sound('cancelMenu'));
+				FlxG.sound.play(Paths.sound('cancelMenu'), ClientPrefs.data.soundVolume);
 				closeBinding();
 			}
 		}
@@ -303,7 +304,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				if (!controls.controllerMode) curOption.keys.keyboard = NONE;
 				else curOption.keys.gamepad = NONE;
 				updateBind(!controls.controllerMode ? InputFormatter.getKeyName(NONE) : InputFormatter.getGamepadName(NONE));
-				FlxG.sound.play(Paths.sound('cancelMenu'));
+				FlxG.sound.play(Paths.sound('cancelMenu'), ClientPrefs.data.soundVolume);
 				closeBinding();
 			}
 		}
@@ -380,7 +381,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 					key = InputFormatter.getGamepadName(FlxGamepadInputID.fromString(curOption.keys.gamepad));
 				}
 				updateBind(key);
-				FlxG.sound.play(Paths.sound('confirmMenu'));
+				FlxG.sound.play(Paths.sound('confirmMenu'), ClientPrefs.data.soundVolume);
 				closeBinding();
 			}
 		}
@@ -489,7 +490,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		}
 
 		curOption = optionsArray[curSelected]; //shorter lol
-		FlxG.sound.play(Paths.sound('scrollMenu'));
+		FlxG.sound.play(Paths.sound('scrollMenu'), ClientPrefs.data.soundVolume);
 	}
 
 	function reloadCheckboxes()

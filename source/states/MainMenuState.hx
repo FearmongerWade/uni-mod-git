@@ -102,7 +102,7 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
-		if (FlxG.sound.music.volume < 0.8)
+		if (FlxG.sound.music.volume < ClientPrefs.data.musicVolume * 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * elapsed;
 			if (FreeplayState.vocals != null)
@@ -140,7 +140,7 @@ class MainMenuState extends MusicBeatState
 
 	function changeItem(huh:Int = 0)
 	{
-		FlxG.sound.play(Paths.sound('scrollMenu'));
+		FlxG.sound.play(Paths.sound('scrollMenu'), ClientPrefs.data.soundVolume);
 
 		curSelected += huh;
 
@@ -166,7 +166,7 @@ class MainMenuState extends MusicBeatState
 	function selectItem()
 	{
 		selectedSomethin = true;
-		FlxG.sound.play(Paths.sound('confirmMenu'));
+		FlxG.sound.play(Paths.sound('confirmMenu'), ClientPrefs.data.soundVolume);
 		if (ClientPrefs.data.flashing) FlxG.camera.flash(FlxColor.WHITE, 1);
 
 		new FlxTimer().start(1.5, function(tmr) {

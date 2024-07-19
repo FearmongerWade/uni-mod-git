@@ -1023,20 +1023,20 @@ class PlayState extends MusicBeatState
 				switch (swagCounter)
 				{
 					case 0:
-						FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
+						FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), ClientPrefs.data.soundVolume *0.6);
 						countdownPrepare = createCountdownSprite(introAlts[0], antialias);
 						tick = THREE;
 					case 1:
 						countdownReady = createCountdownSprite(introAlts[1], antialias);
-						FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
+						FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), ClientPrefs.data.soundVolume *0.6);
 						tick = TWO;
 					case 2:
 						countdownSet = createCountdownSprite(introAlts[2], antialias);
-						FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
+						FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), ClientPrefs.data.soundVolume *0.6);
 						tick = ONE;
 					case 3:
 						countdownGo = createCountdownSprite(introAlts[3], antialias);
-						FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix));
+						FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), ClientPrefs.data.soundVolume);
 						tick = GO;
 					case 4:
 						tick = START;
@@ -1242,11 +1242,13 @@ class PlayState extends MusicBeatState
 		startingSong = false;
 
 		@:privateAccess
-		FlxG.sound.playMusic(inst._sound, 1, false);
+		FlxG.sound.playMusic(inst._sound, ClientPrefs.data.instVolume, false);
 		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end
 		FlxG.sound.music.onComplete = finishSong.bind();
 		vocals.play();
 		opponentVocals.play();
+		vocals.volume = ClientPrefs.data.voicesVolume;
+		opponentVocals.volume = ClientPrefs.data.voicesVolume;
 
 		if(startOnTime > 0) setSongTime(startOnTime - 500);
 		startOnTime = 0;
@@ -2401,7 +2403,7 @@ class PlayState extends MusicBeatState
 				if (storyPlaylist.length <= 0)
 				{
 					Mods.loadTopMod();
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					FlxG.sound.playMusic(Paths.music('freakyMenu'), ClientPrefs.data.musicVolume);
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
 					MusicBeatState.switchState(new StoryMenuState());
@@ -2440,7 +2442,7 @@ class PlayState extends MusicBeatState
 				#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
 				MusicBeatState.switchState(new MainMenuState());
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				FlxG.sound.playMusic(Paths.music('freakyMenu'), ClientPrefs.data.musicVolume);
 				changedDifficulty = false;
 			}
 			transitioning = true;
@@ -2492,7 +2494,7 @@ class PlayState extends MusicBeatState
 	private function popUpScore(note:Note = null):Void
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.data.ratingOffset);
-		vocals.volume = 1;
+		vocals.volume = ClientPrefs.data.voicesVolume;
 
 		if (!ClientPrefs.data.comboStacking && comboGroup.members.length > 0) {
 			for (spr in comboGroup) {
@@ -2923,9 +2925,9 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.data.missSounds)
 		{
 			if (songName == 'paws')
-				FlxG.sound.play(Paths.soundRandom('gfMiss/', 1, 9), FlxG.random.float(0.8, 1.0));
+				FlxG.sound.play(Paths.soundRandom('gfMiss/', 1, 9), ClientPrefs.data.soundVolume *FlxG.random.float(0.8, 1.0));
 			else 
-				FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+				FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), ClientPrefs.data.soundVolume *FlxG.random.float(0.1, 0.2));
 		}
 		
 		vocals.volume = 0;
@@ -2961,7 +2963,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if(opponentVocals.length <= 0) vocals.volume = 1;
+		if(opponentVocals.length <= 0) vocals.volume = ClientPrefs.data.voicesVolume;
 		strumPlayAnim(true, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
 		note.hitByOpponent = true;
 		
@@ -3037,7 +3039,7 @@ class PlayState extends MusicBeatState
 			if(spr != null) spr.playAnim('confirm', true);
 		}
 		else strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
-		vocals.volume = 1;
+		vocals.volume = ClientPrefs.data.voicesVolume;
 
 		if (!note.isSustainNote)
 		{

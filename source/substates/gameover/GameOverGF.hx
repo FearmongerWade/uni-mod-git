@@ -18,7 +18,7 @@ class GameOverGF extends MusicBeatSubstate
         Conductor.bpm = 110;
         FlxG.camera.zoom = 1;
 
-        FlxG.sound.play(Paths.sound('gfdies'));
+        FlxG.sound.play(Paths.sound('gfdies'), ClientPrefs.data.soundVolume);
 
         character = new Character(600, 50, 'gf-dead', true);
         character.scrollFactor.set();
@@ -83,7 +83,7 @@ class GameOverGF extends MusicBeatSubstate
     
                     MusicBeatState.switchState(new states.MainMenuState());
     
-                    FlxG.sound.playMusic(Paths.music('freakyMenu'));
+                    FlxG.sound.playMusic(Paths.music('freakyMenu'), ClientPrefs.data.musicVolume);
                     
                 }
             }
@@ -120,7 +120,7 @@ class GameOverGF extends MusicBeatSubstate
 
     function changeItem(gwa:Int = 0)
     {
-        FlxG.sound.play(Paths.sound('scrollMenu'));
+        FlxG.sound.play(Paths.sound('scrollMenu'), ClientPrefs.data.soundVolume);
 
         curSelected += gwa;
 
@@ -139,7 +139,7 @@ class GameOverGF extends MusicBeatSubstate
     var playingDeathSound:Bool = false;
 	function coolStartDeath(?volume:Float = 1):Void
 	{
-		FlxG.sound.playMusic(Paths.music('toobadGF'), volume, false);
+		FlxG.sound.playMusic(Paths.music('toobadGF'), ClientPrefs.data.musicVolume, false);
         new FlxTimer().start(122.2, function(tmr:FlxTimer){
             endBullshit();
         });
@@ -153,7 +153,7 @@ class GameOverGF extends MusicBeatSubstate
 			isEnding = true;
 			character.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
-			FlxG.sound.play(Paths.music('retryGF'));
+			FlxG.sound.play(Paths.music('retryGF'), ClientPrefs.data.soundVolume);
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()

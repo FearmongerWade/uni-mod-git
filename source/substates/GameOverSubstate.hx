@@ -54,7 +54,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		boyfriend.y += boyfriend.positionArray[1] - PlayState.instance.boyfriend.positionArray[1];
 		add(boyfriend);
 
-		FlxG.sound.play(Paths.sound(deathSoundName));
+		FlxG.sound.play(Paths.sound(deathSoundName), ClientPrefs.data.soundVolume);
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;
 
@@ -158,7 +158,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			isEnding = true;
 			boyfriend.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
-			FlxG.sound.play(Paths.music(endSoundName));
+			FlxG.sound.play(Paths.music(endSoundName), ClientPrefs.data.soundVolume);
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
